@@ -28,12 +28,13 @@
 
     <Button
         android:id="@+id/button_technical_support"
-        android:text="Technical Support"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
         android:layout_marginTop="30dp"
-        app:cornerRadius = "20dp"/>
+        android:text="Technical Support"
+        android:textSize="18sp"
+        app:cornerRadius="20dp" />
+
     <Button
         android:id="@+id/button_legal_info"
         android:text="Legal Information"

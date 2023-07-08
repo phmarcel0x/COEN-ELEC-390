@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Views.SettingsActivity">
+
+    <!-- SETTINGS Text Box -->
+    <TextView
+        android:id="@+id/textView_settings"
+        android:layout_width="374dp"
+        android:layout_height="48dp"
+        android:background="#35b171"
+        android:gravity="center"
+        android:minHeight="48dp"
+        android:text="SETTINGS"
+        android:textColor="#FFFFFF"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline"
+        tools:ignore="Autofill,HardcodedText,TextContrastCheck" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <!-- Add New Medication Button -->
+    <Button
+        android:id="@+id/btn_add_new_medication"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="@drawable/circle_button_background"
+        android:clickable="true"
+        android:focusable="false"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="ADD NEW MEDICATION"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@id/guideline_add_new_start"
+        app:layout_constraintTop_toTopOf="@id/guideline_add_new_top"
+        tools:ignore="HardcodedText,TextContrastCheck" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_add_new_start"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_add_new_top"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.25" />
+
+    <!-- Saved Medication Button -->
+    <Button
+        android:id="@+id/btn_saved_medication"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="@drawable/circle_button_background"
+        android:clickable="true"
+        android:focusable="false"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="SAVED MEDICATION"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@id/guideline_saved_end"
+        app:layout_constraintTop_toTopOf="@id/guideline_saved_top"
+        tools:ignore="HardcodedText,TextContrastCheck" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_saved_end"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_saved_top"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.25" />
+
+    <!-- Medication Notes Button -->
+
+    <Button
+        android:id="@+id/btn_medication_notes"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="@drawable/circle_button_background"
+        android:clickable="true"
+        android:focusable="false"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="MEDICATION NOTES"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@id/guideline_notes_start"
+        app:layout_constraintTop_toTopOf="@id/guideline_notes_top"
+        tools:ignore="HardcodedText,TextContrastCheck" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_notes_start"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_notes_top"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.50" />
+
+    <!-- Accessibility Button -->
+    <Button
+        android:id="@+id/btn_accessibility"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="@drawable/circle_button_background"
+        android:clickable="true"
+        android:focusable="false"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="ACCESSIBILITY SETTINGS"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@id/guideline_access_end"
+        app:layout_constraintTop_toTopOf="@id/guideline_access_top"
+        tools:ignore="HardcodedText,TextContrastCheck" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_access_end"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_access_top"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

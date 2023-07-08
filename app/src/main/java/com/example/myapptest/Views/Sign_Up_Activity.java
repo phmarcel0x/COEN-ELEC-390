@@ -1,8 +1,5 @@
 package com.example.myapptest.Views;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -12,11 +9,10 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.myapptest.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -56,54 +52,45 @@ public class Sign_Up_Activity extends AppCompatActivity {
         progressBar = findViewById(R.id.progress_bar);
         text_view = findViewById(R.id.login_now);
 
-        text_view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent (getApplicationContext(), Login_Activity.class);
-                startActivity(intent);
-                finish();
-            }
+        text_view.setOnClickListener(v -> {
+            Intent intent = new Intent (getApplicationContext(), Login_Activity.class);
+            startActivity(intent);
+            finish();
         });
-        sign_up_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                progressBar.setVisibility(View.VISIBLE);
-                String email, password;
+        sign_up_btn.setOnClickListener(v -> {
+            progressBar.setVisibility(View.VISIBLE);
+            String email, password;
 
-                email = String.valueOf(edit_email.getText());
-                password = String.valueOf(edit_password.getText());
+            email = String.valueOf(edit_email.getText());
+            password = String.valueOf(edit_password.getText());
 
-                if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(Sign_Up_Activity.this, "Enter Email", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                if (TextUtils.isEmpty(password)) {
-                    Toast.makeText(Sign_Up_Activity.this, "Enter Password", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                mAuth.createUserWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                progressBar.setVisibility(View.GONE);
-
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(Sign_Up_Activity.this, "Account has been created.",
-                                            Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                    startActivity(intent);
-                                    finish();
-
-                                } else {
-                                    // If sign in fails, display a message to the user.
-                                    Toast.makeText(Sign_Up_Activity.this, task.getException().getLocalizedMessage(),
-                                            Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
+            if (TextUtils.isEmpty(email)) {
+                Toast.makeText(Sign_Up_Activity.this, "Enter Email", Toast.LENGTH_SHORT).show();
+                return;
             }
+
+            if (TextUtils.isEmpty(password)) {
+                Toast.makeText(Sign_Up_Activity.this, "Enter Password", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            mAuth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(task -> {
+                        progressBar.setVisibility(View.GONE);
+
+                        if (task.isSuccessful()) {
+                            Toast.makeText(Sign_Up_Activity.this, "Account has been created.",
+                                    Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            startActivity(intent);
+                            finish();
+
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Toast.makeText(Sign_Up_Activity.this, task.getException().getLocalizedMessage(),
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    });
         });
 
     }

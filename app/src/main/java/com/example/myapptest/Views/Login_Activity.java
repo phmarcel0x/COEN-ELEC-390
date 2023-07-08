@@ -1,8 +1,5 @@
 package com.example.myapptest.Views;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -12,11 +9,10 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.myapptest.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -54,64 +50,52 @@ public class Login_Activity extends AppCompatActivity {
         Forgot_Password = findViewById(R.id.forgot_password);
 
         // On Sign Up Click --> Switch from login activity to sign up activity.
-        text_view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent (getApplicationContext(), Sign_Up_Activity.class);
-                startActivity(intent);
-                finish();
-            }
+        text_view.setOnClickListener(v -> {
+            Intent intent = new Intent (getApplicationContext(), Sign_Up_Activity.class);
+            startActivity(intent);
+            finish();
         });
 
         // On Login Click --> Check if data is saved in database else error
         // Code from Firebase Database website for Signing in a User
         //
-        btn_login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                progressBar.setVisibility(View.VISIBLE);
-                String email, password;
+        btn_login.setOnClickListener(v -> {
+            progressBar.setVisibility(View.VISIBLE);
+            String email, password;
 
-                email = String.valueOf(edit_email.getText());
-                password = String.valueOf(edit_password.getText());
+            email = String.valueOf(edit_email.getText());
+            password = String.valueOf(edit_password.getText());
 
-                if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(Login_Activity.this, "Enter Email", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                if (TextUtils.isEmpty(password)) {
-                    Toast.makeText(Login_Activity.this, "Enter Password", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                mAuth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                progressBar.setVisibility(View.GONE);
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(Login_Activity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(getApplicationContext(), Homepage_Activity.class);
-                                    startActivity(intent);
-                                    finish();
-                                } else {
-                                    Toast.makeText(Login_Activity.this, "Authentication failed.",
-                                            Toast.LENGTH_SHORT).show();
-
-                                }
-                            }
-                        });
+            if (TextUtils.isEmpty(email)) {
+                Toast.makeText(Login_Activity.this, "Enter Email", Toast.LENGTH_SHORT).show();
+                return;
             }
+
+            if (TextUtils.isEmpty(password)) {
+                Toast.makeText(Login_Activity.this, "Enter Password", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            mAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(task -> {
+                        progressBar.setVisibility(View.GONE);
+                        if (task.isSuccessful()) {
+                            Toast.makeText(Login_Activity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(getApplicationContext(), Homepage_Activity.class);
+                            startActivity(intent);
+                            finish();
+                        } else {
+                            Toast.makeText(Login_Activity.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
         });
 
         // Forgot Password Button --> On click intent to redirect towards Forgot Password Activity
-        Forgot_Password.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Login_Activity.this, Forgot_Password_Activity.class);
-                startActivity(intent);
-                finish();
-            }
+        Forgot_Password.setOnClickListener(v -> {
+            Intent intent = new Intent(Login_Activity.this, Forgot_Password_Activity.class);
+            startActivity(intent);
+            finish();
         });
     }
 }
