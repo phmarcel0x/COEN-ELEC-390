@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+   <LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:padding="15dp"
+    android:background="#6A1310"
+    android:backgroundTint="#6A939F">
+
+    <Button
+        android:id="@+id/button_medication"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:drawableTint="#4CAF50"
+        android:layout_gravity="center"
+        android:textSize="20sp"
+        android:layout_marginTop="150dp"
+        android:text="Medication Locator "
+        android:background="@drawable/round_button"
+        android:textColorLink="#471111"
+        app:rippleColor="#FFEB3B" />
+
+    <Button
+        android:id="@+id/button_technical_support"
+        android:text="Technical Support"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:layout_marginTop="30dp"
+        app:cornerRadius = "20dp"/>
+    <Button
+        android:id="@+id/button_legal_info"
+        android:text="Legal Information"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:layout_marginTop="30dp"
+        app:cornerRadius = "20dp"/>
+
+
+    <Button
+        android:id="@+id/button_settings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:textSize="20sp"
+        android:text="Settings"
+        tools:ignore="MissingConstraints" />
+
+   </LinearLayout>
+

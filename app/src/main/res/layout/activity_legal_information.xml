@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Views.Legal_Information_Activity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LEGAL NOTICE: GPS TRACKING SERVICES
+
+\n\nBy accessing and using this mobile application, you acknowledge and agree to the following:
+
+\n\n1. GPS Tracking Services: The App utilizes tracking services provided by your device's GPS sensor. These services enable the App to determine and share your location information while you are using the App.
+\n\n2. Location Data Collection: The App collects, processes, and stores location-based data to provide you with the intended functionality of the App. This includes your real-time location information, movement patterns, and other related data.
+\n\n3. Purpose of Tracking: The tracking services are utilized to measure the distance between the user of the app and the medication equipped with a GPS sensor. This allows the app to provide information on the user's proximity to the medication and enhance their experience accordingly. The collected location data is used to provide location-based features, such as mapping, navigation, and personalized content.
+\n\n4. Data Privacy and Security: We value your privacy and are committed to protecting your personal information. The location data collected by the App is handled in accordance with our Privacy Policy, which outlines the purposes, methods, and safeguards implemented to ensure the privacy and security of your data.
+\n\n5. Data Accuracy and Reliability: While we strive to provide accurate and reliable location data, it's important to note that GPS accuracy can be affected by various factors beyond our control, including signal strength, atmospheric conditions, and device limitations. Therefore, we do not warrant the accuracy or reliability of the data provided by the App.
+\n\n6. User Consent: By using the App, you provide your consent to the collection, processing, and storage of your location data as described in this legal notice and our Privacy Policy.
+\n\n7. User Responsibility: You are solely responsible for the use of the App and its impact on your personal privacy and safety. It is your responsibility to exercise caution and use discretion while sharing your location information with others through the App.
+\n\n8. Legal Compliance: You agree to use the App and its tracking services in compliance with all applicable laws, regulations, and third-party rights.
+
+\n\nIf you do not agree with any part of this legal notice, please refrain from using the App.\n">
+
+        </TextView>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/back_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="20dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="20dp"
+                android:paddingBottom="10dp"
+                android:text="Back"
+                android:textColor="@color/black"
+                app:cornerRadius="10dp"
+                app:icon="@drawable/baseline_arrow_back_24"
+                app:iconGravity="textStart"
+                app:iconTint="@color/black" />
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

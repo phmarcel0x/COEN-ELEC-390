@@ -1,4 +1,4 @@
-package com.example.myapptest;
+package com.example.myapptest.Views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,15 +8,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.myapptest.LoginActivity;
 import com.example.myapptest.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import org.w3c.dom.Text;
-
 public class MainActivity extends AppCompatActivity {
 
+    // Declaration of Variables
     FirebaseAuth auth;
     Button btn;
     TextView text_view;
@@ -26,13 +24,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Initialization of Variables
         auth = FirebaseAuth.getInstance();
         btn = findViewById(R.id.logout);
         text_view = findViewById(R.id.user);
         user = auth.getCurrentUser();
 
         if (user == null){
-            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+            Intent intent = new Intent(getApplicationContext(), Login_Activity.class);
             startActivity(intent);
             finish();
         }
@@ -44,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Login_Activity.class);
                 startActivity(intent);
                 finish();
             }
