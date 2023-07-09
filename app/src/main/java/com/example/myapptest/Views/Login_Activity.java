@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapptest.Manifest;
 import com.example.myapptest.R;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
@@ -58,7 +59,6 @@ public class Login_Activity extends AppCompatActivity {
 
         // On Login Click --> Check if data is saved in database else error
         // Code from Firebase Database website for Signing in a User
-        //
         btn_login.setOnClickListener(v -> {
             progressBar.setVisibility(View.VISIBLE);
             String email, password;
@@ -89,6 +89,7 @@ public class Login_Activity extends AppCompatActivity {
 
                         }
                     });
+
         });
 
         // Forgot Password Button --> On click intent to redirect towards Forgot Password Activity

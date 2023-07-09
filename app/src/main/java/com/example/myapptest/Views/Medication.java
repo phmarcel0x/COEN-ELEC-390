@@ -25,6 +25,7 @@ public class Medication implements Serializable {
         this.customNotes = customNotes;
     }
 
+    // Getters and Setters
     public String getId() {
         return id;
     }

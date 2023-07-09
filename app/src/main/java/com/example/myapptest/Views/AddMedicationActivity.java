@@ -17,6 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class AddMedicationActivity extends AppCompatActivity {
 
+    // Declaration of the Variables
     private EditText editTextMedicationName;
     private Spinner spinnerTime;
 

@@ -7,6 +7,7 @@ import com.example.myapptest.R;
 
 public class AccessibilityActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
