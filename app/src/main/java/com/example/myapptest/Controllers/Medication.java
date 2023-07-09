@@ -1,4 +1,4 @@
-package com.example.myapptest.Views;
+package com.example.myapptest.Controllers;
 
 import java.io.Serializable;
 

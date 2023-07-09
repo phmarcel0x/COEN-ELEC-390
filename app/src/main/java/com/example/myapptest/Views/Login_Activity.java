@@ -1,5 +1,7 @@
 package com.example.myapptest.Views;
 
+import android.Manifest;
+import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -12,12 +14,14 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+
 import com.example.myapptest.R;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class Login_Activity extends AppCompatActivity {
+
 
     TextInputEditText edit_email, edit_password;
     Button btn_login;
@@ -30,12 +34,13 @@ public class Login_Activity extends AppCompatActivity {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
+        if (currentUser != null) {
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
             finish();
         }
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,9 +55,10 @@ public class Login_Activity extends AppCompatActivity {
         text_view = findViewById(R.id.sign_up_now);
         Forgot_Password = findViewById(R.id.forgot_password);
 
+
         // On Sign Up Click --> Switch from login activity to sign up activity.
         text_view.setOnClickListener(v -> {
-            Intent intent = new Intent (getApplicationContext(), Sign_Up_Activity.class);
+            Intent intent = new Intent(getApplicationContext(), Sign_Up_Activity.class);
             startActivity(intent);
             finish();
         });
@@ -80,7 +86,7 @@ public class Login_Activity extends AppCompatActivity {
                         progressBar.setVisibility(View.GONE);
                         if (task.isSuccessful()) {
                             Toast.makeText(Login_Activity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(getApplicationContext(), Homepage_Activity.class);
+                            Intent intent = new Intent(getApplicationContext(), Homepage_Activity.class);
                             startActivity(intent);
                             finish();
                         } else {
@@ -89,6 +95,7 @@ public class Login_Activity extends AppCompatActivity {
 
                         }
                     });
+
 
         });
 
@@ -99,4 +106,5 @@ public class Login_Activity extends AppCompatActivity {
             finish();
         });
     }
+
 }
