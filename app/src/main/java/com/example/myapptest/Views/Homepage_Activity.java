@@ -2,6 +2,7 @@ package com.example.myapptest.Views;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,6 +31,14 @@ public class Homepage_Activity extends AppCompatActivity {
             finish();
         });
 
+        button_support.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Technical_Support_Activity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
         button_info.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), Legal_Information_Activity.class);
             startActivity(intent);

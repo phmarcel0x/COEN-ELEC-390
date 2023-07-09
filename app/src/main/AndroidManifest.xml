@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH" />
 
     <application
         android:allowBackup="true"
@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyAppTest"
         tools:targetApi="31">
+        <activity
+            android:name=".Views.Technical_Support_Activity"
+            android:exported="false" />
         <activity
             android:name=".Views.SettingsActivity"
             android:exported="false" />

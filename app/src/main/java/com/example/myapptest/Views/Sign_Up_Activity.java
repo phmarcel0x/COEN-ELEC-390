@@ -81,7 +81,7 @@ public class Sign_Up_Activity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Toast.makeText(Sign_Up_Activity.this, "Account has been created.",
                                     Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            Intent intent = new Intent(getApplicationContext(), Homepage_Activity.class);
                             startActivity(intent);
                             finish();
 
