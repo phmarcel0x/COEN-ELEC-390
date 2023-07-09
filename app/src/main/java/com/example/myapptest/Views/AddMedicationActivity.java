@@ -51,6 +51,16 @@ public class AddMedicationActivity extends AppCompatActivity {
         // Set click listener for Cancel button
         Button cancelButton = findViewById(R.id.button_cancel);
         cancelButton.setOnClickListener(v -> cancel());
+
+        // Set click listener for Cancel button
+        Button backButton = findViewById(R.id.back_button);
+        backButton.setOnClickListener(v -> {
+            // Navigate back to the SettingsActivity
+            Intent intent = new Intent(AddMedicationActivity.this, SettingsActivity.class);
+            startActivity(intent);
+            finish(); // Optional: finish the AccessibilityActivity
+        });
+
     }
 
     private void saveMedication() {

@@ -48,6 +48,15 @@ public class MedicationNotesActivity extends AppCompatActivity {
             navigateToSettingsActivity();
         });
 
+        Button backButton = findViewById(R.id.back_button);
+        backButton.setOnClickListener(v -> {
+            if (notesChanged) {
+                showSaveDialog();
+            } else {
+                navigateToSettingsActivity();
+            }
+        });
+
         medicationListLayout = findViewById(R.id.medication_list);
         notesChanged = false;
 

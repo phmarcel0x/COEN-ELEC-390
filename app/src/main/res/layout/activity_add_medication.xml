@@ -34,6 +34,25 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.05" />
 
+    <!-- Back Button -->
+    <Button
+        android:id="@+id/back_button"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:paddingStart="20dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="10dp"
+        android:text="Back"
+        android:textColor="@color/white"
+        app:cornerRadius="10dp"
+        app:icon="@drawable/baseline_arrow_back_24"
+        app:iconGravity="textStart"
+        app:iconTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.95"
+        tools:ignore="HardcodedText,VisualLintButtonSize" />
+
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -105,6 +124,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Cancel"
+                    android:textColor="@color/black"
                     android:background="@drawable/cancel_save_btn_background"
                     android:layout_marginEnd="28dp"
                     tools:ignore="ButtonStyle,HardcodedText" />
@@ -115,6 +135,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Save"
+                    android:textColor="@color/black"
                     android:background="@drawable/cancel_save_btn_background"
                     tools:ignore="ButtonStyle,HardcodedText" />
 
