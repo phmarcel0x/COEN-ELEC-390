@@ -1,6 +1,7 @@
 package com.example.myapptest.Views;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Editable;
@@ -38,6 +39,14 @@ public class MedicationNotesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medication_notes);
+
+        Button saveButton = findViewById(R.id.save_button);
+        saveButton.setOnClickListener(v -> saveMedicationNotes());
+
+        saveButton.setOnClickListener(v -> {
+            saveMedicationNotes();
+            navigateToSettingsActivity();
+        });
 
         medicationListLayout = findViewById(R.id.medication_list);
         notesChanged = false;
@@ -77,9 +86,12 @@ public class MedicationNotesActivity extends AppCompatActivity {
                 // Handle error
             }
         });
+    }
 
-        Button saveButton = findViewById(R.id.save_button);
-        saveButton.setOnClickListener(v -> saveMedicationNotes());
+    private void navigateToSettingsActivity() {
+        Intent intent = new Intent(MedicationNotesActivity.this, SettingsActivity.class);
+        startActivity(intent);
+        finish(); // Optional: finish the MedicationNotesActivity
     }
 
     @Override

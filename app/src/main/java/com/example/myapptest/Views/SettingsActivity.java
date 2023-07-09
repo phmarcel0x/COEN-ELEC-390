@@ -21,11 +21,15 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         Button savedMedicationsButton = findViewById(R.id.btn_saved_medication);
         Button medicationCommentsButton = findViewById(R.id.btn_medication_notes);
         Button accessibilityButton = findViewById(R.id.btn_accessibility);
+        Button backButton = findViewById(R.id.back_button);
 
         addMedicationButton.setOnClickListener(this);
         savedMedicationsButton.setOnClickListener(this);
         medicationCommentsButton.setOnClickListener(this);
         accessibilityButton.setOnClickListener(this);
+        backButton.setOnClickListener(this);
+
+
     }
 
     @Override
@@ -43,7 +47,9 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         } else if (id == R.id.btn_accessibility) {// Handle "Accessibility" button click
             Intent accessibilityIntent = new Intent(this, AccessibilityActivity.class);
             startActivity(accessibilityIntent);
+        } else if (id == R.id.back_button) {// Handle "Back" button click
+            Intent accessibilityIntent = new Intent(this, Homepage_Activity.class);
+            startActivity(accessibilityIntent);
         }
     }
 }
-

@@ -2,10 +2,12 @@ package com.example.myapptest.Views;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.TypedValue;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -35,6 +37,14 @@ public class SavedMedicationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_saved_medication);
+
+        Button backButton = findViewById(R.id.back_button);
+        backButton.setOnClickListener(v -> {
+            // Navigate back to the SettingsActivity
+            Intent intent = new Intent(SavedMedicationActivity.this, SettingsActivity.class);
+            startActivity(intent);
+            finish(); // Optional: finish the SavedMedicationActivity
+        });
 
         medicationListLayout = findViewById(R.id.medication_list);
 

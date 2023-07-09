@@ -4,18 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:padding="15dp"
+    android:background="#6A1310"
+    android:backgroundTint="#6A939F"
     tools:context=".Views.SettingsActivity">
+
 
     <!-- SETTINGS Text Box -->
     <TextView
         android:id="@+id/textView_settings"
         android:layout_width="374dp"
         android:layout_height="48dp"
-        android:background="#35b171"
+        android:background="@android:color/transparent"
         android:gravity="center"
         android:minHeight="48dp"
         android:text="SETTINGS"
-        android:textColor="#FFFFFF"
+        android:textColor="@android:color/white"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,19 +36,41 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.05" />
 
+
+    <!-- Back Button -->
+    <Button
+        android:id="@+id/back_button"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:paddingStart="20dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="10dp"
+        android:text="Back"
+        android:textColor="@color/white"
+        app:cornerRadius="10dp"
+        app:icon="@drawable/baseline_arrow_back_24"
+        app:iconGravity="textStart"
+        app:iconTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.95" />
+
+
     <!-- Add New Medication Button -->
     <Button
         android:id="@+id/btn_add_new_medication"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:background="@drawable/circle_button_background"
+        android:drawableTint="#4CAF50"
+        android:textSize="16sp"
+        android:text="ADD NEW MEDICATION"
+        android:background="@drawable/round_button"
         android:clickable="true"
         android:focusable="false"
         android:gravity="center"
         android:padding="16dp"
-        android:text="ADD NEW MEDICATION"
-        android:textColor="@android:color/white"
-        android:textSize="16sp"
+        android:textColorLink="#471111"
+        app:rippleColor="#FFEB3B"
         app:layout_constraintStart_toStartOf="@id/guideline_add_new_start"
         app:layout_constraintTop_toTopOf="@id/guideline_add_new_top"
         tools:ignore="HardcodedText,TextContrastCheck" />
@@ -61,20 +89,22 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.25" />
 
+
     <!-- Saved Medication Button -->
     <Button
         android:id="@+id/btn_saved_medication"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:background="@drawable/circle_button_background"
+        android:drawableTint="#4CAF50"
+        android:textSize="16sp"
+        android:text="SAVED MEDICATION"
+        android:background="@drawable/round_button"
         android:clickable="true"
         android:focusable="false"
         android:gravity="center"
         android:padding="16dp"
-        android:text="SAVED MEDICATION"
-        android:textAlignment="center"
-        android:textColor="@android:color/white"
-        android:textSize="16sp"
+        android:textColorLink="#471111"
+        app:rippleColor="#FFEB3B"
         app:layout_constraintEnd_toEndOf="@id/guideline_saved_end"
         app:layout_constraintTop_toTopOf="@id/guideline_saved_top"
         tools:ignore="HardcodedText,TextContrastCheck" />
@@ -93,21 +123,22 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.25" />
 
-    <!-- Medication Notes Button -->
 
+    <!-- Medication Notes Button -->
     <Button
         android:id="@+id/btn_medication_notes"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:background="@drawable/circle_button_background"
+        android:drawableTint="#4CAF50"
+        android:textSize="16sp"
+        android:text="MEDICATION NOTES"
+        android:background="@drawable/round_button"
         android:clickable="true"
         android:focusable="false"
         android:gravity="center"
         android:padding="16dp"
-        android:text="MEDICATION NOTES"
-        android:textAlignment="center"
-        android:textColor="@android:color/white"
-        android:textSize="16sp"
+        android:textColorLink="#471111"
+        app:rippleColor="#FFEB3B"
         app:layout_constraintStart_toStartOf="@id/guideline_notes_start"
         app:layout_constraintTop_toTopOf="@id/guideline_notes_top"
         tools:ignore="HardcodedText,TextContrastCheck" />
@@ -131,15 +162,16 @@
         android:id="@+id/btn_accessibility"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:background="@drawable/circle_button_background"
+        android:drawableTint="#4CAF50"
+        android:textSize="16sp"
+        android:text="ACCESSIBILITY SETTINGS"
+        android:background="@drawable/round_button"
         android:clickable="true"
         android:focusable="false"
         android:gravity="center"
         android:padding="16dp"
-        android:text="ACCESSIBILITY SETTINGS"
-        android:textAlignment="center"
-        android:textColor="@android:color/white"
-        android:textSize="16sp"
+        android:textColorLink="#471111"
+        app:rippleColor="#FFEB3B"
         app:layout_constraintEnd_toEndOf="@id/guideline_access_end"
         app:layout_constraintTop_toTopOf="@id/guideline_access_top"
         tools:ignore="HardcodedText,TextContrastCheck" />
@@ -157,5 +189,7 @@
         android:layout_height="match_parent"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.5" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

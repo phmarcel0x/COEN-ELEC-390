@@ -6,6 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="15dp"
+
+    android:background="#6A1310"
+    android:backgroundTint="#6A939F"
     tools:context=".Views.Legal_Information_Activity">
 
     <ScrollView
@@ -19,6 +23,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
             android:text="LEGAL NOTICE: GPS TRACKING SERVICES
 
 \n\nBy accessing and using this mobile application, you acknowledge and agree to the following:
@@ -45,7 +50,7 @@
                 android:paddingEnd="20dp"
                 android:paddingBottom="10dp"
                 android:text="Back"
-                android:textColor="@color/black"
+                android:textColor="#471111"
                 app:cornerRadius="10dp"
                 app:icon="@drawable/baseline_arrow_back_24"
                 app:iconGravity="textStart"

@@ -4,25 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:padding="15dp"
+    android:background="#6A1310"
+    android:backgroundTint="#6A939F"
     tools:context=".Views.MedicationNotesActivity">
 
-    <!-- Saved Medication Text Box -->
+    <!-- Medication Notes Text Box -->
     <TextView
-        android:id="@+id/editText_medication_notes"
+        android:id="@+id/textView_medication_notes"
         android:layout_width="374dp"
         android:layout_height="48dp"
-        android:background="#35b171"
-        android:ems="10"
+        android:background="@android:color/transparent"
         android:gravity="center"
         android:minHeight="48dp"
         android:text="MEDICATION NOTES"
-        android:textColor="#FFFFFF"
+        android:textColor="@android:color/white"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/guideline"
-        tools:ignore="Autofill,HardcodedText,TextContrastCheck,TextSizeCheck" />
+        tools:ignore="Autofill,HardcodedText,TextContrastCheck" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -37,7 +41,7 @@
         android:layout_marginTop="34dp"
         android:fillViewport="true"
         app:layout_constraintBottom_toTopOf="@id/save_button"
-        app:layout_constraintTop_toBottomOf="@id/editText_medication_notes"
+        app:layout_constraintTop_toBottomOf="@id/textView_medication_notes"
         android:contentDescription="Scrollable medication notes"
         tools:ignore="HardcodedText">
 
