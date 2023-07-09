@@ -1,4 +1,4 @@
-package com.example.myapptest.Views;
+package com.example.myapptest.Controllers;
 
 import java.io.Serializable;
 
@@ -25,6 +25,7 @@ public class Medication implements Serializable {
         this.customNotes = customNotes;
     }
 
+    // Getters and Setters
     public String getId() {
         return id;
     }

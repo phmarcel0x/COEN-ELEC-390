@@ -4,7 +4,6 @@ public class Firebase_Data_Helper {
 
     String name, email, username, password;
 
-
     public Firebase_Data_Helper(String name, String email, String username, String password) {
         this.name = name;
         this.email = email;
@@ -12,6 +11,7 @@ public class Firebase_Data_Helper {
         this.password = password;
     }
 
+    // Getters and Setters
     public String getName() {
         return name;
     }
