@@ -34,17 +34,20 @@
         app:layout_constraintGuide_percent="0.15" />
 
     <!-- Splash foreground config. -->
+
+    <!-- Guideline to position the progress bar -->
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/splash_screen_foreground"
         android:scaleType="fitCenter"
-        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/splash_screen_foreground"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
-    <!-- Guideline to position the progress bar -->
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_bottom"
         android:layout_width="match_parent"
