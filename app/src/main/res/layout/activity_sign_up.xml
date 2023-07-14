@@ -8,6 +8,7 @@
     android:layout_gravity="center"
     android:orientation="vertical"
     android:padding="15dp"
+    android:background="#6B939D"
     tools:context=".Views.Sign_Up_Activity">
 
     <androidx.cardview.widget.CardView
@@ -22,6 +23,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Sign Up"
+        android:textColor="@color/white"
         android:textSize="36sp"
         android:layout_marginBottom="20dp"
         android:textStyle="bold" />
@@ -102,8 +104,10 @@
         android:layout_marginTop="20dp"
         android:id="@+id/login_now"
         android:text="Already a User? Login"
+        android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
 
 
 </LinearLayout>

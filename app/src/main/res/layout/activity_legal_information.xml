@@ -24,6 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
+            android:textSize="16sp"
             android:text="LEGAL NOTICE: GPS TRACKING SERVICES
 
 \n\nBy accessing and using this mobile application, you acknowledge and agree to the following:

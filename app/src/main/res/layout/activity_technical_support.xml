@@ -7,11 +7,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="15dp"
-
-    android:background="#6A1310"
-    android:backgroundTint="#6A939F"
+    android:background="#6B939D"
     tools:context=".Views.Legal_Information_Activity">
-
 
 
     <TextView
@@ -19,36 +16,40 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="For Customer Support Please Contact Us Via: \n\n"
+        android:textColor="@color/white"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/text_phone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Phone: +1 800-888-9999 \n\n\n"
-                android:textSize="20sp" />
+    <TextView
+        android:id="@+id/text_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Phone: +1 800-888-9999 \n\n\n"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/text_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Email: Y_alkafr@live.concordia.ca \n\n"
-                android:textSize="20sp" />
+    <TextView
+        android:id="@+id/text_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Email: Y_alkafr@live.concordia.ca \n\n"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:textSize="20sp" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/back_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingStart="20dp"
-                android:paddingTop="10dp"
-                android:paddingEnd="20dp"
-                android:paddingBottom="10dp"
-                android:text="Back"
-                android:textColor="#471111"
-                app:cornerRadius="10dp"
-                app:icon="@drawable/baseline_arrow_back_24"
-                app:iconGravity="textStart"
-                app:iconTint="@color/black" />
-        </LinearLayout>
-
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/back_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="20dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="10dp"
+        android:text="Back"
+        android:textColor="#471111"
+        app:cornerRadius="10dp"
+        app:icon="@drawable/baseline_arrow_back_24"
+        app:iconGravity="textStart"
+        app:iconTint="@color/black" />
+</LinearLayout>

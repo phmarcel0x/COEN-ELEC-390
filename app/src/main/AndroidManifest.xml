@@ -59,7 +59,7 @@
             android:name=".Views.Homepage_Activity"
             android:exported="false" />
         <activity
-            android:name=".Views.Loading_Screen"
+            android:name=".Views.SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

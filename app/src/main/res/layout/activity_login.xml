@@ -8,6 +8,7 @@
     android:layout_gravity="center"
     android:orientation="vertical"
     android:padding="15dp"
+    android:background="#6A939F"
     tools:context=".Views.Login_Activity">
 
     <androidx.cardview.widget.CardView
@@ -22,6 +23,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Login"
+        android:textColor="@color/white"
         android:textSize="36sp"
         android:textAlignment="center"
         android:layout_marginBottom="20dp"
@@ -63,11 +65,11 @@
         android:id="@+id/forgot_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textStyle="bold"
         android:text="Forgot Password"
         android:textSize="16sp"
-        android:textAlignment="textEnd"
+        android:textAlignment="center"
         android:layout_marginTop="12dp" />
 
     <Button
@@ -86,6 +88,7 @@
         android:layout_marginTop="20dp"
         android:id="@+id/sign_up_now"
         android:text="Not yet registered? Sign Up"
+        android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
