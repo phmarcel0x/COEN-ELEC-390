@@ -16,12 +16,14 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
 private ActivityMapsBinding binding;
+private Marker trackerMarker;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -33,9 +35,16 @@ private ActivityMapsBinding binding;
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             startActivity(new Intent(MapsActivity.this, Homepage_Activity.class));
+            return true;
+        }
+        if (item.getItemId() == R.id.action_refresh) {
+            moveMarker();
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(trackerMarker.getPosition()));
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +54,7 @@ private ActivityMapsBinding binding;
         setSupportActionBar(mapToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
 //
 //     binding = ActivityMapsBinding.inflate(getLayoutInflater());
 //     setContentView(binding.getRoot());
@@ -70,7 +80,17 @@ private ActivityMapsBinding binding;
 
         // Add a marker in Sydney and move the camera
         LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+        trackerMarker = mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
+    }
+
+    private void moveMarker(){
+        trackerMarker.setPosition(getRandomLatLng());
+    }
+    private LatLng getRandomLatLng() {
+        double lat = -34.0 + 50; // Adjust the range as needed (e.g., 0.2 for a smaller range)
+        double lng = 151.0 - 50; // Adjust the range as needed (e.g., 0.2 for a smaller range)
+        return new LatLng(lat, lng);
     }
 }

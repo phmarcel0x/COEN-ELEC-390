@@ -27,4 +27,13 @@
         android:layout_height="match_parent"
         tools:context=".Views.MapsActivity" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/refresh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:layout_gravity="right|top"
+        app:srcCompat="@android:drawable/ic_popup_sync" />
+
+
 </LinearLayout>
