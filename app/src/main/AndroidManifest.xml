@@ -16,6 +16,9 @@
         android:theme="@style/Theme.MyAppTest"
         tools:targetApi="31">
         <activity
+            android:name=".Views.Logout_Activity"
+            android:exported="false" />
+        <activity
             android:name=".Views.Technical_Support_Activity"
             android:exported="false" />
         <activity

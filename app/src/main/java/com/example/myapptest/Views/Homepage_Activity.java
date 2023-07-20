@@ -12,7 +12,7 @@ import com.example.myapptest.R;
 
 public class Homepage_Activity extends AppCompatActivity {
 
-    Button button_meds, button_support, button_info, button_settings;
+    Button button_meds, button_support, button_info, button_settings, logout_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +24,7 @@ public class Homepage_Activity extends AppCompatActivity {
         button_support = findViewById(R.id.button_technical_support);
         button_info = findViewById(R.id.button_legal_info);
         button_settings = findViewById(R.id.button_settings);
+        logout_btn = findViewById(R.id.button_logout);
 
         button_meds.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
@@ -48,6 +49,15 @@ public class Homepage_Activity extends AppCompatActivity {
         button_settings.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
             startActivity(intent);
+        });
+
+        logout_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Logout_Activity.class);
+                startActivity(intent);
+                finish();
+            }
         });
 
     }
