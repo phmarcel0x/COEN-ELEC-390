@@ -22,7 +22,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-private ActivityMapsBinding binding;
+    private ActivityMapsBinding binding;
+    private float zoom = 10f;
 private Marker trackerMarker;
 
     @Override
@@ -39,7 +40,7 @@ private Marker trackerMarker;
         }
         if (item.getItemId() == R.id.action_refresh) {
             moveMarker();
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(trackerMarker.getPosition()));
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(trackerMarker.getPosition(), zoom));
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -81,7 +82,7 @@ private Marker trackerMarker;
         // Add a marker in Sydney and move the camera
         LatLng sydney = new LatLng(-34, 151);
         trackerMarker = mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, zoom));
 
     }
 
