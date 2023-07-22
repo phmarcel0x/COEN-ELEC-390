@@ -2,13 +2,16 @@ package com.example.myapptest.Views;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.myapptest.Controllers.GPS;
 import com.example.myapptest.R;
 import com.example.myapptest.databinding.ActivityMapsBinding;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -18,13 +21,26 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.List;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private ActivityMapsBinding binding;
     private float zoom = 10f;
-private Marker trackerMarker;
+    private Marker trackerMarker;
+
+    private DatabaseReference databaseReference;
+
+    private List<GPS> gps_location;
+    private LatLng mostRecentLocation;
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -39,11 +55,31 @@ private Marker trackerMarker;
             return true;
         }
         if (item.getItemId() == R.id.action_refresh) {
-            moveMarker();
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(trackerMarker.getPosition(), zoom));
+            // Refresh the marker manually
+            updateMarker();
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    // ... (other code remains unchanged)
+
+    // Method to update the marker position manually
+    private void updateMarker() {
+        if (mostRecentLocation != null) {
+            // Update the marker's position to the most recent location
+            if (trackerMarker != null) {
+                trackerMarker.setPosition(mostRecentLocation);
+            } else {
+                // If the marker doesn't exist, create it at the most recent location
+                trackerMarker = mMap.addMarker(new MarkerOptions().position(mostRecentLocation).title("MediKit"));
+            }
+
+            // Move the camera to the most recent location with the specified zoom level
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mostRecentLocation, zoom));
+        } else {
+            Toast.makeText(this, "No recent location data available.", Toast.LENGTH_SHORT).show();
+        }
     }
 
 
@@ -75,23 +111,59 @@ private Marker trackerMarker;
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
      */
+    // Inside onMapReady method
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        trackerMarker = mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, zoom));
+        // Get a reference to the "gps_location" node in Firebase
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("gps_location");
 
+        // Add a listener to retrieve the data from Firebase
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                // Clear existing markers from the map
+                mMap.clear();
+
+                // Check if the "latitude" and "longitude" nodes exist before trying to get their values
+                if (dataSnapshot.child("latitude").exists() && dataSnapshot.child("longitude").exists()) {
+                    // Get the latitude and longitude values from the "gps_location" node
+                    double latitude = dataSnapshot.child("latitude").getValue(Double.class);
+                    double longitude = dataSnapshot.child("longitude").getValue(Double.class);
+
+                    // Create a LatLng object from the latitude and longitude
+                    mostRecentLocation = new LatLng(latitude, longitude);
+
+                    // Add a marker to the map
+                    mMap.addMarker(new MarkerOptions().position(mostRecentLocation).title("MediKit")); // You can customize the title if needed
+
+                    // Move the camera to the most recent location with the specified zoom level
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mostRecentLocation, zoom));
+                } else {
+                    // Handle the case where latitude or longitude data is missing
+                    Toast.makeText(MapsActivity.this, "No location data available.", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle database read error if needed
+                Toast.makeText(MapsActivity.this, "Error fetching data from Firebase", Toast.LENGTH_SHORT).show();
+                Log.e("FirebaseError", databaseError.getMessage());
+            }
+        });
     }
 
-    private void moveMarker(){
-        trackerMarker.setPosition(getRandomLatLng());
-    }
-    private LatLng getRandomLatLng() {
-        double lat = -34.0 + 50; // Adjust the range as needed (e.g., 0.2 for a smaller range)
-        double lng = 151.0 - 50; // Adjust the range as needed (e.g., 0.2 for a smaller range)
-        return new LatLng(lat, lng);
-    }
 }
+
+//
+//    private void moveMarker(){
+//        trackerMarker.setPosition(getRandomLatLng());
+//    }
+//    private LatLng getRandomLatLng() {
+//        double lat = -34.0 + 50; // Adjust the range as needed (e.g., 0.2 for a smaller range)
+//        double lng = 151.0 - 50; // Adjust the range as needed (e.g., 0.2 for a smaller range)
+//        return new LatLng(lat, lng);
+//    }
+//}
