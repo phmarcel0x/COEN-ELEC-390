@@ -6,8 +6,7 @@
     android:layout_gravity="center"
     android:orientation="vertical"
     android:padding="15dp"
-    android:background="#6A1310"
-    android:backgroundTint="#6A939F"
+    android:background="@color/background"
     tools:context=".Views.AddMedicationActivity">
 
     <!-- Add Medication Text Box -->
@@ -19,7 +18,7 @@
         android:gravity="center"
         android:minHeight="48dp"
         android:text="ADD NEW MEDICATION"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,11 +43,12 @@
         android:paddingEnd="20dp"
         android:paddingBottom="10dp"
         android:text="Back"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/button"
         app:cornerRadius="10dp"
         app:icon="@drawable/baseline_arrow_back_24"
         app:iconGravity="textStart"
-        app:iconTint="@color/white"
+        app:iconTint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintVertical_bias="0.95"
         tools:ignore="HardcodedText,VisualLintButtonSize" />
@@ -71,12 +71,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:background="@drawable/border"
             android:padding="15dp">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+
                 android:text="Name of Medication"
                 android:textSize="24sp"
                 android:textStyle="bold"

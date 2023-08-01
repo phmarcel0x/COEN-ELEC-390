@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:padding="15dp"
     android:background="#6A1310"
-    android:backgroundTint="#6A939F"
+    android:backgroundTint="@color/background"
     tools:context=".Views.AccessibilityActivity">
 
     <!-- Add Medication Text Box -->
@@ -20,7 +20,7 @@
         android:gravity="center"
         android:minHeight="48dp"
         android:text="ACCESSIBILITY"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,11 +46,12 @@
         android:paddingEnd="20dp"
         android:paddingBottom="10dp"
         android:text="Back"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/button"
         app:cornerRadius="10dp"
         app:icon="@drawable/baseline_arrow_back_24"
         app:iconGravity="textStart"
-        app:iconTint="@color/white"
+        app:iconTint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintVertical_bias="0.95"
         tools:ignore="HardcodedText,VisualLintButtonSize" />
