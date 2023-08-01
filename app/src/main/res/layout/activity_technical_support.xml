@@ -33,10 +33,20 @@
         android:id="@+id/text_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Email: Y_alkafr@live.concordia.ca \n\n"
+        android:text="Email: Y_alkafri@live.concordia.ca \n\n\n"
         android:textColor="@color/white"
         android:textAlignment="center"
         android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/text_notice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="If you wish to connect your sensor to a new network, please send an email to our technical team with the name and password of the network connection. Please be sure that the credentials are correct since it is case sensitive. "
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:textSize="20sp" />
+
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/back_button"
@@ -46,6 +56,7 @@
         android:paddingTop="10dp"
         android:paddingEnd="20dp"
         android:paddingBottom="10dp"
+        android:layout_marginTop="150dp"
         android:text="Back"
         android:textColor="#471111"
         app:cornerRadius="10dp"

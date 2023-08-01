@@ -16,7 +16,7 @@ public class Logout_Activity extends AppCompatActivity {
 
     // Declaration of Variables
     FirebaseAuth auth;
-    Button btn, logout_btn;
+    Button btn, logout_btn, back_button;
     TextView text_view;
     FirebaseUser user;
     @Override
@@ -27,6 +27,7 @@ public class Logout_Activity extends AppCompatActivity {
         // Initialization of Variables
         auth = FirebaseAuth.getInstance();
         btn = findViewById(R.id.logout);
+        back_button = findViewById(R.id.back_button);
         text_view = findViewById(R.id.user);
         user = auth.getCurrentUser();
 
@@ -44,6 +45,15 @@ public class Logout_Activity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), Login_Activity.class);
             startActivity(intent);
             finish();
+        });
+
+        back_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Homepage_Activity.class);
+                startActivity(intent);
+                finish();
+            }
         });
     }
 }

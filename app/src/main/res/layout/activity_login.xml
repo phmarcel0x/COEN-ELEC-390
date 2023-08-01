@@ -56,6 +56,13 @@
             android:layout_height="wrap_content"/>
     </com.google.android.material.textfield.TextInputLayout>
 
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Show Password"
+        android:id="@+id/show_password"/>
+
     <ProgressBar
         android:id="@+id/progress_bar"
         android:visibility="gone"

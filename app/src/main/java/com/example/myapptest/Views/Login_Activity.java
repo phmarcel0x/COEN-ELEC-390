@@ -5,8 +5,12 @@ import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,6 +31,7 @@ public class Login_Activity extends AppCompatActivity {
     Button btn_login;
     ProgressBar progressBar;
     TextView text_view, Forgot_Password;
+    CheckBox show_hide_password;
     FirebaseAuth mAuth;
 
     @Override
@@ -54,6 +59,7 @@ public class Login_Activity extends AppCompatActivity {
         progressBar = findViewById(R.id.progress_bar);
         text_view = findViewById(R.id.sign_up_now);
         Forgot_Password = findViewById(R.id.forgot_password);
+        show_hide_password = findViewById(R.id.show_password);
 
 
         // On Sign Up Click --> Switch from login activity to sign up activity.
@@ -104,6 +110,18 @@ public class Login_Activity extends AppCompatActivity {
             Intent intent = new Intent(Login_Activity.this, Forgot_Password_Activity.class);
             startActivity(intent);
             finish();
+        });
+
+        show_hide_password.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    edit_password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                }
+                else {
+                    edit_password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                }
+            }
         });
     }
 

@@ -62,8 +62,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         return super.onOptionsItemSelected(item);
     }
 
-    // ... (other code remains unchanged)
-
     // Method to update the marker position manually
     private void updateMarker() {
         if (mostRecentLocation != null) {
@@ -157,13 +155,3 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 }
 
-//
-//    private void moveMarker(){
-//        trackerMarker.setPosition(getRandomLatLng());
-//    }
-//    private LatLng getRandomLatLng() {
-//        double lat = -34.0 + 50; // Adjust the range as needed (e.g., 0.2 for a smaller range)
-//        double lng = 151.0 - 50; // Adjust the range as needed (e.g., 0.2 for a smaller range)
-//        return new LatLng(lat, lng);
-//    }
-//}

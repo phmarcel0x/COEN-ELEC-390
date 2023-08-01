@@ -21,7 +21,23 @@
         android:text="Logout"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        app:cornerRadius = "20dp"
-        />
+        app:cornerRadius = "20dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/back_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="20dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="10dp"
+        android:layout_marginTop="25dp"
+        android:text="Back"
+        android:textColor="#FFFFFF"
+        app:cornerRadius="20dp"
+        app:icon="@drawable/baseline_arrow_back_24"
+        app:iconGravity="textStart"
+        app:iconTint="@color/white" />
+
 
 </LinearLayout>
