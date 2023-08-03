@@ -115,7 +115,7 @@ public class Login_Activity extends AppCompatActivity {
         show_hide_password.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked){
+                if (isChecked == true){
                     edit_password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                 }
                 else {

@@ -41,8 +41,8 @@ public class SavedMedicationActivity extends AppCompatActivity {
 
         Button backButton = findViewById(R.id.back_button);
         backButton.setOnClickListener(v -> {
-            // Navigate back to the SettingsActivity
-            Intent intent = new Intent(SavedMedicationActivity.this, SettingsActivity.class);
+            // Navigate back to the Homepage_Activity
+            Intent intent = new Intent(SavedMedicationActivity.this, Homepage_Activity.class);
             startActivity(intent);
             finish(); // Optional: finish the SavedMedicationActivity
         });

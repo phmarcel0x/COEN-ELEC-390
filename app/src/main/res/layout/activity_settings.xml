@@ -5,28 +5,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
+    android:background="@drawable/background_login"
     android:orientation="vertical"
     android:padding="15dp"
-    android:backgroundTint="@color/background"
-    tools:context=".Views.SettingsActivity">
+    tools:context=".Views.Settings_Activity">
 
-
-    <!-- SETTINGS Text Box -->
+    <!-- Settings Text Box -->
     <TextView
-        android:id="@+id/textView_settings"
+        android:id="@+id/text_settings"
         android:layout_width="374dp"
         android:layout_height="48dp"
         android:background="@android:color/transparent"
         android:gravity="center"
         android:minHeight="48dp"
-        android:text="SETTINGS"
-        android:textColor="@color/black"
+        android:text="Settings"
+        android:textColor="@android:color/black"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/guideline"
-        tools:ignore="Autofill,HardcodedText,TextContrastCheck" />
+        tools:ignore="Autofill,HardcodedText,TextContrastCheck,TextSizeCheck" />
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -35,44 +35,59 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.05" />
 
-
     <!-- Back Button -->
     <Button
         android:id="@+id/back_button"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:backgroundTint="@color/button"
         android:paddingStart="20dp"
         android:paddingTop="10dp"
         android:paddingEnd="20dp"
         android:paddingBottom="10dp"
         android:text="Back"
-        android:backgroundTint="@color/button"
         android:textColor="@color/black"
         app:cornerRadius="10dp"
         app:icon="@drawable/baseline_arrow_back_24"
         app:iconGravity="textStart"
         app:iconTint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.95" />
+        app:layout_constraintVertical_bias="0.95"
+        tools:ignore="HardcodedText,VisualLintButtonSize" />
 
+    <!-- Technical Support Buttons -->
 
-    <!-- Add New Medication Button -->
-    <Button
-        android:id="@+id/btn_add_new_medication"
+    <ImageButton
+        android:id="@+id/btn_technical_support_1"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:textSize="16sp"
-        android:text="ADD NEW MEDICATION"
-        android:backgroundTint="@color/button"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="116dp"
+        android:background="@drawable/cancel_save_btn_background"
         android:clickable="true"
         android:focusable="false"
         android:gravity="center"
-        android:padding="16dp"
+        android:padding="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/technical_support_1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText,MissingConstraints,TextContrastCheck" />
 
-        app:rippleColor="#FFEB3B"
-        app:layout_constraintStart_toStartOf="@id/guideline_add_new_start"
-        app:layout_constraintTop_toTopOf="@id/guideline_add_new_top"
-        tools:ignore="HardcodedText,TextContrastCheck" />
+    <TextView
+        android:id="@+id/text_technical_support"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="116dp"
+        android:layout_marginEnd="102dp"
+        android:layout_marginBottom="432dp"
+        android:text="Technical Support"
+        android:textAlignment="center"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.933"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_add_new_start"
@@ -86,26 +101,23 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.25" />
+        app:layout_constraintGuide_percent="0.26" />
 
-
-    <!-- Saved Medication Button -->
-    <Button
-        android:id="@+id/btn_saved_medication"
+    <ImageButton
+        android:id="@+id/btn_technical_support_2"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:drawableTint="#4CAF50"
-        android:textSize="16sp"
-        android:text="SAVED MEDICATION"
-        android:backgroundTint="@color/button"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="116dp"
+        android:background="@drawable/cancel_save_btn_background"
         android:clickable="true"
         android:focusable="false"
         android:gravity="center"
-        android:padding="16dp"
-        android:textColorLink="#471111"
-        app:rippleColor="#FFEB3B"
-        app:layout_constraintEnd_toEndOf="@id/guideline_saved_end"
-        app:layout_constraintTop_toTopOf="@id/guideline_saved_top"
+        android:padding="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/technical_support_2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText,TextContrastCheck" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -120,26 +132,23 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.25" />
+        app:layout_constraintGuide_begin="208dp" />
 
+    <!-- Legal Information Button -->
 
-    <!-- Medication Notes Button -->
-    <Button
-        android:id="@+id/btn_medication_notes"
+    <ImageButton
+        android:id="@+id/btn_legal_information"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:drawableTint="#4CAF50"
-        android:textSize="16sp"
-        android:text="MEDICATION NOTES"
-        android:backgroundTint="@color/button"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="364dp"
+        android:background="@drawable/legal_information"
         android:clickable="true"
         android:focusable="false"
         android:gravity="center"
-        android:padding="16dp"
-        android:textColorLink="#471111"
-        app:rippleColor="#FFEB3B"
-        app:layout_constraintStart_toStartOf="@id/guideline_notes_start"
-        app:layout_constraintTop_toTopOf="@id/guideline_notes_top"
+        android:padding="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText,TextContrastCheck" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -156,39 +165,65 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.50" />
 
-    <!-- Accessibility Button -->
-    <Button
-        android:id="@+id/btn_accessibility"
+    <TextView
+        android:id="@+id/text_legal_information"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="515dp"
+        android:text="Legal \nInformation"
+        android:textAlignment="center"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <!-- Logout Button -->
+
+    <ImageButton
+        android:id="@+id/btn_logout"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:drawableTint="#4CAF50"
-        android:textSize="16sp"
-        android:text="ACCESSIBILITY SETTINGS"
-        android:backgroundTint="@color/button"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="376dp"
+        android:background="@drawable/cancel_save_btn_background"
         android:clickable="true"
         android:focusable="false"
         android:gravity="center"
-        android:padding="16dp"
-        android:textColorLink="#471111"
-        app:rippleColor="#FFEB3B"
-        app:layout_constraintEnd_toEndOf="@id/guideline_access_end"
-        app:layout_constraintTop_toTopOf="@id/guideline_access_top"
+        android:padding="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/logout_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText,TextContrastCheck" />
 
+    <TextView
+        android:id="@+id/text_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="212dp"
+        android:layout_marginBottom="180dp"
+        android:text="Logout"
+        android:textAlignment="center"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_access_end"
+        android:id="@+id/guideline_saved_end_button4"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.95" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_access_top"
+        android:id="@+id/guideline_saved_top_button4"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginEnd="396dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintGuide_begin="204dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

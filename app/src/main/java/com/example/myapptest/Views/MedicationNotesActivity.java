@@ -46,7 +46,7 @@ public class MedicationNotesActivity extends AppCompatActivity {
 
         saveButton.setOnClickListener(v -> {
             saveMedicationNotes();
-            navigateToSettingsActivity();
+            navigateToHomepage_Activity();
         });
 
         Button backButton = findViewById(R.id.back_button);
@@ -54,7 +54,7 @@ public class MedicationNotesActivity extends AppCompatActivity {
             if (notesChanged) {
                 showSaveDialog();
             } else {
-                navigateToSettingsActivity();
+                navigateToHomepage_Activity();
             }
         });
 
@@ -98,8 +98,8 @@ public class MedicationNotesActivity extends AppCompatActivity {
         });
     }
 
-    private void navigateToSettingsActivity() {
-        Intent intent = new Intent(MedicationNotesActivity.this, SettingsActivity.class);
+    private void navigateToHomepage_Activity() {
+        Intent intent = new Intent(MedicationNotesActivity.this, Homepage_Activity.class);
         startActivity(intent);
         finish(); // Optional: finish the MedicationNotesActivity
     }

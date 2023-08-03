@@ -7,8 +7,6 @@
     android:layout_gravity="center"
     android:orientation="vertical"
     android:padding="15dp"
-    android:background="#6A1310"
-    android:backgroundTint="#6A939F"
     tools:context=".Views.MedicationNotesActivity">
 
     <!-- Medication Notes Text Box -->
@@ -20,7 +18,7 @@
         android:gravity="center"
         android:minHeight="48dp"
         android:text="MEDICATION NOTES"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,6 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="34dp"
+        android:background="@drawable/border"
         android:fillViewport="true"
         app:layout_constraintBottom_toTopOf="@id/save_button"
         app:layout_constraintTop_toBottomOf="@id/textView_medication_notes"

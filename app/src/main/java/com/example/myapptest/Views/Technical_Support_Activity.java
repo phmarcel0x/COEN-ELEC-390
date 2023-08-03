@@ -29,7 +29,7 @@ public class Technical_Support_Activity extends AppCompatActivity {
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent  = new Intent (getApplicationContext(), Homepage_Activity.class);
+                Intent intent  = new Intent (getApplicationContext(), Settings_Activity.class);
                 startActivity(intent);
                 finish();
             }

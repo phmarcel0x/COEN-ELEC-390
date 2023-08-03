@@ -22,9 +22,6 @@
             android:name=".Views.Technical_Support_Activity"
             android:exported="false" />
         <activity
-            android:name=".Views.SettingsActivity"
-            android:exported="false" />
-        <activity
             android:name=".Views.SavedMedicationActivity"
             android:exported="false" />
         <activity
@@ -34,7 +31,7 @@
             android:name=".Views.AddMedicationActivity"
             android:exported="false" />
         <activity
-            android:name=".Views.AccessibilityActivity"
+            android:name=".Views.Settings_Activity"
             android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.

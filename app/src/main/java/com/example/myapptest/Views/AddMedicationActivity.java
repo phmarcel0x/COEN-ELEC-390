@@ -57,8 +57,8 @@ public class AddMedicationActivity extends AppCompatActivity {
         // Set click listener for Cancel button
         Button backButton = findViewById(R.id.back_button);
         backButton.setOnClickListener(v -> {
-            // Navigate back to the SettingsActivity
-            Intent intent = new Intent(AddMedicationActivity.this, SettingsActivity.class);
+            // Navigate back to the Homepage_Activity
+            Intent intent = new Intent(AddMedicationActivity.this, Homepage_Activity.class);
             startActivity(intent);
             finish(); // Optional: finish the AccessibilityActivity
         });
@@ -99,7 +99,7 @@ public class AddMedicationActivity extends AppCompatActivity {
                         intent.putExtra("selectedTime", selectedTime);
                         startActivity(intent);
 
-                        // Finish the activity and return to SettingsActivity
+                        // Finish the activity and return to Homepage_Activity
                         finish();
                     })
                     .addOnFailureListener(e -> Toast.makeText(AddMedicationActivity.this, "Failed to save medication", Toast.LENGTH_SHORT).show());
@@ -113,7 +113,7 @@ public class AddMedicationActivity extends AppCompatActivity {
         InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(editTextMedicationName.getWindowToken(), 0);
 
-        // Finish the activity and return to SettingsActivity
+        // Finish the activity and return to Homepage_Activity
         finish();
     }
 }
