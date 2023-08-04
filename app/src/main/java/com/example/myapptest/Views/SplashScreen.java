@@ -10,7 +10,7 @@ import com.example.myapptest.R;
 
 public class SplashScreen extends AppCompatActivity {
 
-    private static final int SPLASH_DELAY = 3000; // Splash screen delay in milliseconds
+    private static final int SPLASH_DELAY = 4000; // Splash screen delay in milliseconds
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
