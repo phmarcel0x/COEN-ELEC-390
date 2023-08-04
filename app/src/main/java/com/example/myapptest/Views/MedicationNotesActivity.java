@@ -18,6 +18,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapptest.Controllers.Medication;
 import com.example.myapptest.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -61,8 +63,11 @@ public class MedicationNotesActivity extends AppCompatActivity {
         medicationListLayout = findViewById(R.id.medication_list);
         notesChanged = false;
 
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
+
         // Initialize Firebase database reference
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Saved Medication");
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child(uid).child("Saved Medication");
 
         // Retrieve saved medications from the database
         savedMedications = new ArrayList<>();

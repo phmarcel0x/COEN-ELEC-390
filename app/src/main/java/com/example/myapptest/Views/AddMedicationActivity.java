@@ -13,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapptest.Controllers.Medication;
 import com.example.myapptest.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -80,31 +82,42 @@ public class AddMedicationActivity extends AppCompatActivity {
             return;
         }
 
-        // Generate a unique ID for the medication
-        String medicationId = databaseReference.child("Saved Medication").push().getKey();
+        // Get the currently authenticated user
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-        // Create Medication object
-        Medication medication = new Medication(medicationId, medicationName, selectedTime);
+        // Make sure a user is authenticated before trying to get their UID
+        if (user != null) {
+            String uid = user.getUid();
 
-        // Save medication to Firebase database under "Saved Medication" node
-        if (medicationId != null) {
-            DatabaseReference savedMedicationRef = FirebaseDatabase.getInstance().getReference().child("Saved Medication");
-            savedMedicationRef.child(medicationId).setValue(medication)
-                    .addOnSuccessListener(aVoid -> {
-                        Toast.makeText(AddMedicationActivity.this, "Medication saved successfully", Toast.LENGTH_SHORT).show();
+            // Generate a unique ID for the medication
+            String medicationId = databaseReference.child("Users").child(uid).child("Saved Medication").push().getKey();
 
-                        // Start SavedMedicationActivity and pass medication details
-                        Intent intent = new Intent(AddMedicationActivity.this, SavedMedicationActivity.class);
-                        intent.putExtra("medicationName", medicationName);
-                        intent.putExtra("selectedTime", selectedTime);
-                        startActivity(intent);
+            // Create Medication object
+            Medication medication = new Medication(medicationId, medicationName, selectedTime);
 
-                        // Finish the activity and return to Homepage_Activity
-                        finish();
-                    })
-                    .addOnFailureListener(e -> Toast.makeText(AddMedicationActivity.this, "Failed to save medication", Toast.LENGTH_SHORT).show());
+            // Save medication to Firebase database under the user's "Saved Medication" node
+            if (medicationId != null) {
+                DatabaseReference savedMedicationRef = FirebaseDatabase.getInstance().getReference().child("Users").child(uid).child("Saved Medication");
+                savedMedicationRef.child(medicationId).setValue(medication)
+                        .addOnSuccessListener(aVoid -> {
+                            Toast.makeText(AddMedicationActivity.this, "Medication saved successfully", Toast.LENGTH_SHORT).show();
+
+                            // Start SavedMedicationActivity and pass medication details
+                            Intent intent = new Intent(AddMedicationActivity.this, SavedMedicationActivity.class);
+                            intent.putExtra("medicationName", medicationName);
+                            intent.putExtra("selectedTime", selectedTime);
+                            startActivity(intent);
+
+                            // Finish the activity and return to Homepage_Activity
+                            finish();
+                        })
+                        .addOnFailureListener(e -> Toast.makeText(AddMedicationActivity.this, "Failed to save medication", Toast.LENGTH_SHORT).show());
+            } else {
+                Toast.makeText(this, "Failed to save medication", Toast.LENGTH_SHORT).show();
+            }
         } else {
-            Toast.makeText(this, "Failed to save medication", Toast.LENGTH_SHORT).show();
+            // Handle the case where no user is authenticated
+            Toast.makeText(AddMedicationActivity.this, "No user is authenticated.", Toast.LENGTH_SHORT).show();
         }
     }
 
