@@ -2,23 +2,67 @@ package com.example.myapptest.Views;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.myapptest.R;
-
+import com.google.android.material.navigation.NavigationView;
 
 public class Homepage_Activity extends AppCompatActivity implements View.OnClickListener {
+
+    private DrawerLayout drawerLayout;
+    private ActionBarDrawerToggle actionBarDrawerToggle;
+    private NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
+        // Set up the Toolbar
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
+        // Set up the Navigation Drawer
+        drawerLayout = findViewById(R.id.drawer_layout);
+        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
+
+        // Set up the NavigationView
+        navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                        // Handle menu item clicks
+                        int itemId = menuItem.getItemId();
+                        if (itemId == R.id.nav_support){
+                            Intent intent = new Intent(getApplicationContext(), Technical_Support_Activity.class);
+                            startActivity(intent);
+                        }
+                        else if (itemId == R.id.nav_logout){
+                            Intent intent = new Intent (getApplicationContext(), Logout_Activity.class);
+                            startActivity(intent);
+                        } else if (itemId == R.id.nav_legal) {
+                            Intent intent = new Intent (getApplicationContext(), Legal_Information_Activity.class);
+                            startActivity(intent);
+                        }
+                        // Close the drawer after handling the click
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        return true;
+                    }
+                });
         ImageButton addMedicationButton = findViewById(R.id.btn_add_new_medication);
         ImageButton savedMedicationsButton = findViewById(R.id.btn_saved_medication);
         ImageButton medicationCommentsButton = findViewById(R.id.btn_medication_notes);

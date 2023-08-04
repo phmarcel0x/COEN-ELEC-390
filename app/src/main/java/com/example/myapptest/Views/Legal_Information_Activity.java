@@ -21,7 +21,7 @@ public class Legal_Information_Activity extends AppCompatActivity {
         btn_back = findViewById(R.id.back_button);
 
         btn_back.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), Settings_Activity.class);
+            Intent intent = new Intent(getApplicationContext(), Homepage_Activity.class);
             startActivity(intent);
             finish();
         });
