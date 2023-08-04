@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -17,6 +16,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.myapptest.R;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class Homepage_Activity extends AppCompatActivity implements View.OnClickListener {
 
@@ -28,6 +29,7 @@ public class Homepage_Activity extends AppCompatActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
+
         // Set up the Toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -47,11 +49,11 @@ public class Homepage_Activity extends AppCompatActivity implements View.OnClick
                     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                         // Handle menu item clicks
                         int itemId = menuItem.getItemId();
-                        if (itemId == R.id.nav_support){
+                        if (itemId == R.id.nav_support) {
                             Intent intent = new Intent(getApplicationContext(), Technical_Support_Activity.class);
                             startActivity(intent);
                         }
-                        else if (itemId == R.id.nav_logout){
+                        else if (itemId == R.id.nav_logout) {
                             Intent intent = new Intent (getApplicationContext(), Logout_Activity.class);
                             startActivity(intent);
                         } else if (itemId == R.id.nav_legal) {
@@ -63,6 +65,23 @@ public class Homepage_Activity extends AppCompatActivity implements View.OnClick
                         return true;
                     }
                 });
+
+        // Fetch the user's details
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            String name = user.getDisplayName();
+            String email = user.getEmail();
+
+            // Get the NavigationView's header
+            View header = navigationView.getHeaderView(0);
+            TextView nameTextView = header.findViewById(R.id.user_name);
+            TextView emailTextView = header.findViewById(R.id.email);
+
+            // Set the TextViews to the user's name and email
+            nameTextView.setText(name);
+            emailTextView.setText(email);
+        }
+
         ImageButton addMedicationButton = findViewById(R.id.btn_add_new_medication);
         ImageButton savedMedicationsButton = findViewById(R.id.btn_saved_medication);
         ImageButton medicationCommentsButton = findViewById(R.id.btn_medication_notes);
@@ -92,3 +111,4 @@ public class Homepage_Activity extends AppCompatActivity implements View.OnClick
         }
     }
 }
+
