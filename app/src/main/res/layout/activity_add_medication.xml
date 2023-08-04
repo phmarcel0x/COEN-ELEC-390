@@ -104,15 +104,26 @@
                 android:textStyle="bold"
                 tools:ignore="HardcodedText" />
 
-            <Spinner
+            <Button
                 android:id="@+id/spinner_time"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:backgroundTint="@color/button"
                 android:layout_marginTop="8dp"
                 android:entries="@array/times_of_day"
                 android:minHeight="48dp"
-                android:prompt="@string/select_time" />
+                android:text="@string/select_time" />
+            <Button
+                android:id="@+id/calendar_date"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/button"
+                android:layout_marginTop="8dp"
+                android:entries="@array/times_of_day"
+                android:minHeight="48dp"
+                android:text="Select Date" />
 
             <LinearLayout
                 android:layout_width="match_parent"

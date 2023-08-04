@@ -6,22 +6,25 @@ public class Medication implements Serializable {
     private String id;
     private String name;
     private String time;
+    private String date;
     private String customNotes;
 
     public Medication() {
         // Required empty constructor for Firebase
     }
 
-    public Medication(String medicationId, String medicationName, String selectedTime) {
+    public Medication(String medicationId, String medicationName, String selectedTime, String selectedDate) {
         this.id = medicationId;
         this.name = medicationName;
         this.time = selectedTime;
+        this.date = selectedDate;
     }
 
-    public Medication(String id, String name, String time, String customNotes) {
+    public Medication(String id, String name, String time, String date, String customNotes) {
         this.id = id;
         this.name = name;
         this.time = time;
+        this.date = date;
         this.customNotes = customNotes;
     }
 
@@ -36,6 +39,9 @@ public class Medication implements Serializable {
 
     public String getTime() {
         return time;
+    }
+    public String getDate(){
+        return date;
     }
 
     public String getCustomNotes() {

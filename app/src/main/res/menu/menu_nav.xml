@@ -1,10 +1,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
         <item
             android:id="@+id/nav_support"
-            android:title="Support" />
+            android:title="Technical Support" />
         <item
             android:id="@+id/nav_legal"
-            android:title="Legal" />
+            android:title="Legal Information" />
         <item
             android:id="@+id/nav_logout"
             android:title="Logout" />
