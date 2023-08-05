@@ -82,15 +82,14 @@
             android:exported="false" />
 
         ...
-        <receiver android:name=".Views.BootReceiver"
-            android:enabled="false"
+
+        <service
+            android:name=".Models.MyFirebaseInstanceService"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
             </intent-filter>
-        </receiver>
-
-        <service android:name=".Views.NotificationService"/>
+        </service>
 
     </application>
 

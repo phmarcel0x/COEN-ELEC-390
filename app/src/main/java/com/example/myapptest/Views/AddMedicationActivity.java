@@ -178,7 +178,6 @@ public class AddMedicationActivity extends AppCompatActivity {
                             finish();
                         })
                         .addOnFailureListener(e -> Toast.makeText(AddMedicationActivity.this, "Failed to save medication", Toast.LENGTH_SHORT).show());
-                scheduleNotification(selectedTime);
             } else {
                 Toast.makeText(this, "Failed to save medication", Toast.LENGTH_SHORT).show();
             }
@@ -197,28 +196,5 @@ public class AddMedicationActivity extends AppCompatActivity {
         finish();
     }
 
-    private void scheduleNotification(String selectedTime){
-        Intent notificationIntent = new Intent(this, NotificationService.class);
-        PendingIntent pendingIntent = PendingIntent.getService(this, 0, notificationIntent, 0);
 
-        AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
-        alarmManager.setExact(AlarmManager.RTC_WAKEUP, getFutureTime(selectedTime), pendingIntent);
-    }
-    private long getFutureTime(String selectedTime){
-        String[] parts = selectedTime.split(":");
-        int hour = Integer.parseInt(parts[0]);
-        int minutes = Integer.parseInt(parts[1]);
-
-        Calendar calendar = Calendar.getInstance();
-        Calendar now = (Calendar) calendar.clone();
-
-        calendar.set(Calendar.HOUR_OF_DAY, hour);
-        calendar.set(Calendar.MINUTE, minutes);
-        calendar.set(Calendar.SECOND, 0);
-
-        if(calendar.before(now)){
-            calendar.add(Calendar.DATE, 1);
-        }
-     return calendar.getTimeInMillis();
-    }
 }
