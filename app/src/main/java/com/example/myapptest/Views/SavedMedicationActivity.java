@@ -113,7 +113,7 @@ public class SavedMedicationActivity extends AppCompatActivity {
             medicationTextView.setLayoutParams(textLayoutParams);
             medicationTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 24);
             medicationTextView.setTypeface(null, Typeface.BOLD);
-            medicationTextView.setText(medication.getName() + " - " + medication.getTime());
+            medicationTextView.setText(medication.getName() + " - " + medication.getTime() + "\n" + medication.getDate());
 
             // Create an ImageView for the delete button
             ImageView deleteImageView = new ImageView(this);
