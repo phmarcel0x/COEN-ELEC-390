@@ -4,14 +4,24 @@
     android:id="@+id/nav_header"
     android:layout_width="match_parent"
     android:layout_height="100dp"
-    android:background="@drawable/background_login"
+    android:background="@drawable/background_new"
     android:gravity="bottom"
     android:orientation="vertical"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <!-- Example: User Name TextView -->
     <TextView
+        android:id="@+id/text_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" User Connected:"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="21sp" />
+    <TextView
         android:id="@+id/user_name"
+        android:textColor="@color/black"
+        android:scrollbarSize="19dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
@@ -21,7 +31,9 @@
         android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textStyle="bold|italic"
         android:textSize="20sp"
+        android:layout_marginLeft="5dp"
         android:textColor="@color/black"/>
 
 </LinearLayout>
