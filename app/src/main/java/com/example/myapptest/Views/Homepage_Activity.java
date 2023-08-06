@@ -59,6 +59,9 @@ public class Homepage_Activity extends AppCompatActivity implements View.OnClick
                         } else if (itemId == R.id.nav_legal) {
                             Intent intent = new Intent (getApplicationContext(), Legal_Information_Activity.class);
                             startActivity(intent);
+                        } else if (itemId == R.id.nav_important_notice) {
+                            Intent intent = new Intent (getApplicationContext(), Important_Notice_Activity.class);
+                            startActivity(intent);
                         }
                         // Close the drawer after handling the click
                         drawerLayout.closeDrawer(GravityCompat.START);

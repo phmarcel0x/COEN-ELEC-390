@@ -57,6 +57,9 @@
             android:name=".Views.Legal_Information_Activity"
             android:exported="false" />
         <activity
+            android:name=".Views.Important_Notice_Activity"
+            android:exported="false" />
+        <activity
             android:name=".Views.Homepage_Activity"
             android:exported="false" />
         <activity

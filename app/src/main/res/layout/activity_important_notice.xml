@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="15dp"
+    android:background="@color/background"
+    tools:context=".Views.Important_Notice_Activity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/text_important_notice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="IMPORTANT NOTICE \n"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:layout_marginTop="13dp"
+        android:textColor="@color/black"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="23sp" />
+
+    <TextView
+        android:id="@+id/text_notice1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Please ensure the following are applied : \n\n 1- Wifi/Data Enabled : \n\n Go to Settings -> Connections -> Wi-Fi \n OR \n Settings -> Connections -> Data usage -> Mobile data \n"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:id="@+id/image_notice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       android:src="@drawable/img_notice" />
+
+    <TextView
+        android:id="@+id/text_notice2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="\n 2- Notifications Permitted : \n\n Go to Settings -> Notifications -> App Notifications -> Search for MediMaps -> Allow Notifications"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:textSize="20sp" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/back_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="20dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="10dp"
+        android:layout_marginTop="150dp"
+        android:text="Back"
+        android:backgroundTint="@color/button"
+        android:textColor="@color/black"
+        app:cornerRadius="10dp"
+        app:icon="@drawable/baseline_arrow_back_24"
+        app:iconGravity="textStart"
+        app:iconTint="@color/black" />
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>
