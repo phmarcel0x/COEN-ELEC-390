@@ -144,6 +144,7 @@ public class SavedMedicationActivity extends AppCompatActivity {
         builder.setTitle("Confirm Delete")
                 .setMessage("Are you sure you want to delete this medication?")
                 .setPositiveButton("Delete", (dialog, which) -> {
+                    ask(medication);
                     // Delete medication from Firebase database
                     if (medication != null) {
                         String medicationId = medication.getId();
@@ -154,4 +155,17 @@ public class SavedMedicationActivity extends AppCompatActivity {
                 .setNegativeButton("Cancel", null)
                 .show();
     }
+    public void ask(Medication medication){
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+        builder1.setTitle("Update Medication List")
+                .setMessage("Would you like to add a new medication to the list?")
+                .setPositiveButton("Yes", (dialog, which) -> {
+                    Intent intent = new Intent (getApplicationContext(), AddMedicationActivity.class);
+                    startActivity(intent);
+                    finish();
+                })
+                .setNegativeButton("No", null)
+                .show();
+    }
 }
+
