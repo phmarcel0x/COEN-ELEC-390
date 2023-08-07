@@ -142,10 +142,38 @@ public class AddMedicationActivity extends AppCompatActivity {
         String selectedDate = date_view.getText().toString();
 
         // Validate input
-        if (medicationName.isEmpty()) {
+        if (selectedTime.equals("Select Time")&&selectedDate.equals("Select Date")&&medicationName.isEmpty()) {
+            Toast.makeText(this, "Please select a Medication Name, Time and Date", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        else if (selectedTime.equals("Select Time")&&selectedDate.equals("Select Date")) {
+            Toast.makeText(this, "Please select a Time and Date", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        else if (selectedTime.equals("Select Time")&&medicationName.isEmpty()) {
+            Toast.makeText(this, "Please select a Medication Name and Time", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        else if (selectedDate.equals("Select Date")&&medicationName.isEmpty()) {
+            Toast.makeText(this, "Please select a Medication Name and Date", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        // Validating if the time is Selected
+
+        if (selectedTime.equals("Select Time")) {
+            Toast.makeText(this, "Please select a Time", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        // Validating if the Date is Selected
+        else if (selectedDate.equals("Select Date")) {
+            Toast.makeText(this, "Please select a Date", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        else if (medicationName.isEmpty()) {
             Toast.makeText(this, "Please enter the medication name", Toast.LENGTH_SHORT).show();
             return;
         }
+
 
         // Get the currently authenticated user
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
