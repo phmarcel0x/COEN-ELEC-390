@@ -19,6 +19,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapptest.Controllers.Medication;
 import com.example.myapptest.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -41,16 +43,18 @@ public class SavedMedicationActivity extends AppCompatActivity {
 
         Button backButton = findViewById(R.id.back_button);
         backButton.setOnClickListener(v -> {
-            // Navigate back to the SettingsActivity
-            Intent intent = new Intent(SavedMedicationActivity.this, SettingsActivity.class);
+            // Navigate back to the Homepage_Activity
+            Intent intent = new Intent(SavedMedicationActivity.this, Homepage_Activity.class);
             startActivity(intent);
             finish(); // Optional: finish the SavedMedicationActivity
         });
 
         medicationListLayout = findViewById(R.id.medication_list);
 
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
         // Initialize Firebase database reference
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Saved Medication");
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child(uid).child("Saved Medication");
 
         // Retrieve saved medications from the database
         savedMedications = new ArrayList<>();
@@ -109,7 +113,7 @@ public class SavedMedicationActivity extends AppCompatActivity {
             medicationTextView.setLayoutParams(textLayoutParams);
             medicationTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 24);
             medicationTextView.setTypeface(null, Typeface.BOLD);
-            medicationTextView.setText(medication.getName() + " - " + medication.getTime());
+            medicationTextView.setText(medication.getName() + " - " + medication.getTime() + "\n" + medication.getDate());
 
             // Create an ImageView for the delete button
             ImageView deleteImageView = new ImageView(this);
@@ -140,6 +144,7 @@ public class SavedMedicationActivity extends AppCompatActivity {
         builder.setTitle("Confirm Delete")
                 .setMessage("Are you sure you want to delete this medication?")
                 .setPositiveButton("Delete", (dialog, which) -> {
+                    ask(medication);
                     // Delete medication from Firebase database
                     if (medication != null) {
                         String medicationId = medication.getId();
@@ -150,4 +155,17 @@ public class SavedMedicationActivity extends AppCompatActivity {
                 .setNegativeButton("Cancel", null)
                 .show();
     }
+    public void ask(Medication medication){
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+        builder1.setTitle("Update Medication List")
+                .setMessage("Would you like to add a new medication to the list?")
+                .setPositiveButton("Yes", (dialog, which) -> {
+                    Intent intent = new Intent (getApplicationContext(), AddMedicationActivity.class);
+                    startActivity(intent);
+                    finish();
+                })
+                .setNegativeButton("No", null)
+                .show();
+    }
 }
+

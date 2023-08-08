@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:gravity = "center"
     android:layout_height="match_parent"
-    android:background="#6A939F"
+    android:background="@drawable/background"
     tools:context=".Views.MainActivity">
 
     <TextView
@@ -21,6 +21,8 @@
         android:text="Logout"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:backgroundTint="@color/button"
+        android:textColor="@color/black"
         app:cornerRadius = "20dp" />
 
     <com.google.android.material.button.MaterialButton
@@ -33,11 +35,12 @@
         android:paddingBottom="10dp"
         android:layout_marginTop="25dp"
         android:text="Back"
-        android:textColor="#FFFFFF"
+        android:backgroundTint="@color/button"
+        android:textColor="@color/black"
         app:cornerRadius="20dp"
         app:icon="@drawable/baseline_arrow_back_24"
         app:iconGravity="textStart"
-        app:iconTint="@color/white" />
+        app:iconTint="@color/black" />
 
 
 </LinearLayout>
