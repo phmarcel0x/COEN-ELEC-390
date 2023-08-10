@@ -74,7 +74,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
 
             // Move the camera to the most recent location with the specified zoom level
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mostRecentLocation, zoom));
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(mostRecentLocation, zoom));
         } else {
             Toast.makeText(this, "No recent location data available.", Toast.LENGTH_SHORT).show();
         }
@@ -137,7 +137,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     mMap.addMarker(new MarkerOptions().position(mostRecentLocation).title("MediKit")); // You can customize the title if needed
 
                     // Move the camera to the most recent location with the specified zoom level
-                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mostRecentLocation, zoom));
+                    //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mostRecentLocation, zoom));
                 } else {
                     // Handle the case where latitude or longitude data is missing
                     Toast.makeText(MapsActivity.this, "No location data available.", Toast.LENGTH_SHORT).show();
