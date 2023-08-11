@@ -1,14 +1,15 @@
 package com.example.myapptest.Controllers;
 
-public class GPS {
+public class GPS_Data_Helper {
     float latitude;
     float longitude;
 
-    public GPS(float latitude, float longitude) {
+    public GPS_Data_Helper(float latitude, float longitude) {
         this.latitude = latitude;
         this.longitude = longitude;
     }
 
+    // Getters and Setters
     public float getLatitude() {
         return latitude;
     }

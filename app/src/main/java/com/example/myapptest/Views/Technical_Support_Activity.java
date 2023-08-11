@@ -12,6 +12,7 @@ import com.example.myapptest.R;
 
 public class Technical_Support_Activity extends AppCompatActivity {
 
+    // Declaration of the variables
     TextView txt_support, txt_phone, txt_email;
     Button btn_back;
 
@@ -20,6 +21,7 @@ public class Technical_Support_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_technical_support);
 
+        // Get references from views (XML)
         txt_support = findViewById(R.id.text_support);
         txt_phone = findViewById(R.id.text_phone);
         txt_email = findViewById(R.id.text_email);

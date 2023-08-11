@@ -7,7 +7,7 @@
     android:layout_gravity="center"
     android:orientation="vertical"
     android:padding="15dp"
-    tools:context=".Views.MedicationNotesActivity">
+    tools:context=".Views.Medication_Notes_Activity">
 
     <!-- Medication Notes Text Box -->
     <TextView
@@ -33,6 +33,7 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.05" />
 
+    <!-- Scroll View -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -41,7 +42,7 @@
         android:fillViewport="true"
         app:layout_constraintBottom_toTopOf="@id/save_button"
         app:layout_constraintTop_toBottomOf="@id/textView_medication_notes"
-        android:contentDescription="Scrollable medication notes"
+        android:contentDescription="Scrollable medicationDataHelper notes"
         tools:ignore="HardcodedText">
 
         <LinearLayout
@@ -55,7 +56,7 @@
 
     </ScrollView>
 
-
+    <!-- Save Button -->
     <Button
         android:id="@+id/save_button"
         android:layout_width="match_parent"

@@ -2,8 +2,10 @@ package com.example.myapptest.Controllers;
 
 public class Firebase_Data_Helper {
 
+    // Declaration of the Variables
     String name, email, username, password;
 
+    // Constructor with Arguments for the Firebase Database
     public Firebase_Data_Helper(String name, String email, String username, String password) {
         this.name = name;
         this.email = email;

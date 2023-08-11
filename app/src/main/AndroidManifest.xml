@@ -26,13 +26,13 @@
             android:name=".Views.Technical_Support_Activity"
             android:exported="false" />
         <activity
-            android:name=".Views.SavedMedicationActivity"
+            android:name=".Views.Saved_Medication_Activity"
             android:exported="false" />
         <activity
-            android:name=".Views.MedicationNotesActivity"
+            android:name=".Views.Medication_Notes_Activity"
             android:exported="false" />
         <activity
-            android:name=".Views.AddMedicationActivity"
+            android:name=".Views.Add_Medication_Activity"
             android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
@@ -50,7 +50,7 @@
             android:value="AIzaSyASqDR10NX_tEe2gHRZq0OeMgicqunEjoA" />
 
         <activity
-            android:name=".Views.MapsActivity"
+            android:name=".Views.Maps_Activity"
             android:exported="false"
             android:label="@string/title_activity_maps" />
         <activity
@@ -63,7 +63,7 @@
             android:name=".Views.Homepage_Activity"
             android:exported="false" />
         <activity
-            android:name=".Views.SplashScreen"
+            android:name=".Views.Splash_Screen_Activity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

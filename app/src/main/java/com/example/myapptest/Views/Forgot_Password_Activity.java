@@ -28,7 +28,7 @@ public class Forgot_Password_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password);
 
-        // Initialization of variables
+        //  Get references from views (XML)
 
         btn_back = findViewById(R.id.back_button);
         btn_reset = findViewById(R.id.reset_button);
@@ -55,6 +55,8 @@ public class Forgot_Password_Activity extends AppCompatActivity {
             finish();
         });
     }
+
+    // Reset Password Function that checks it the email is saved in the database and sends a reset password link to the email provided.
     private void reset_password() {
         progressBar.setVisibility(View.VISIBLE);
         btn_reset.setVisibility(View.INVISIBLE);

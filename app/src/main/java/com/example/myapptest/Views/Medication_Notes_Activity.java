@@ -16,7 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myapptest.Controllers.Medication;
+import com.example.myapptest.Controllers.Medication_Data_Helper;
 import com.example.myapptest.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -30,14 +30,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class MedicationNotesActivity extends AppCompatActivity {
+public class Medication_Notes_Activity extends AppCompatActivity {
 
+    // Declaration of the variables
     private LinearLayout medicationListLayout;
     private DatabaseReference databaseReference;
-    private List<Medication> savedMedications;
+    private List<Medication_Data_Helper> savedMedicationDataHelpers;
     private HashMap<String, String> medicationNotesMap;
     private boolean notesChanged;
 
+    // Get the references from the views
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +53,8 @@ public class MedicationNotesActivity extends AppCompatActivity {
             navigateToHomepage_Activity();
         });
 
+        // On click back button to redirect the user back to homepage if no notes have been added
+        // If added then show what has been added then the user will go back to the homepage
         Button backButton = findViewById(R.id.back_button);
         backButton.setOnClickListener(v -> {
             if (notesChanged) {
@@ -63,6 +67,7 @@ public class MedicationNotesActivity extends AppCompatActivity {
         medicationListLayout = findViewById(R.id.medication_list);
         notesChanged = false;
 
+        // Get the user's information --> User Specific saved medication
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getUid();
 
@@ -70,24 +75,25 @@ public class MedicationNotesActivity extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child(uid).child("Saved Medication");
 
         // Retrieve saved medications from the database
-        savedMedications = new ArrayList<>();
+        savedMedicationDataHelpers = new ArrayList<>();
         medicationNotesMap = new HashMap<>(); // Initialize medication notes map
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                savedMedications.clear();
+                savedMedicationDataHelpers.clear();
                 medicationNotesMap.clear(); // Clear medication notes map
 
+                // Create new medication and if not empty add it to the saved medication list.
                 for (DataSnapshot medicationSnapshot : dataSnapshot.getChildren()) {
-                    Medication medication = medicationSnapshot.getValue(Medication.class);
-                    if (medication != null) {
-                        savedMedications.add(medication);
+                    Medication_Data_Helper medicationDataHelper = medicationSnapshot.getValue(Medication_Data_Helper.class);
+                    if (medicationDataHelper != null) {
+                        savedMedicationDataHelpers.add(medicationDataHelper);
 
                         // Retrieve existing custom notes from the medication object (if available)
-                        String customNotes = medication.getCustomNotes();
+                        String customNotes = medicationDataHelper.getCustomNotes();
                         if (customNotes != null) {
-                            medicationNotesMap.put(medication.getId(), customNotes);
+                            medicationNotesMap.put(medicationDataHelper.getId(), customNotes);
                         }
                     }
                 }
@@ -98,17 +104,20 @@ public class MedicationNotesActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                // Handle error
+                // Handle Error Exception
             }
         });
     }
 
+    // Function to redirect the user back the homepage activity once finished from the medication notes activity
     private void navigateToHomepage_Activity() {
-        Intent intent = new Intent(MedicationNotesActivity.this, Homepage_Activity.class);
+        Intent intent = new Intent(Medication_Notes_Activity.this, Homepage_Activity.class);
         startActivity(intent);
         finish(); // Optional: finish the MedicationNotesActivity
     }
 
+    // On click for the back button --> if notes have changed --> Save new notes and show the new output
+    // If not changed --> go back to homepage activity
     @Override
     public void onBackPressed() {
         if (notesChanged) {
@@ -122,8 +131,8 @@ public class MedicationNotesActivity extends AppCompatActivity {
         medicationListLayout.removeAllViews(); // Clear the existing views
 
         // Create a view for each saved medication
-        for (int i = 0; i < savedMedications.size(); i++) {
-            Medication medication = savedMedications.get(i);
+        for (int i = 0; i < savedMedicationDataHelpers.size(); i++) {
+            Medication_Data_Helper medicationDataHelper = savedMedicationDataHelpers.get(i);
 
             // Create a new LinearLayout to hold each medication item
             LinearLayout itemLayout = new LinearLayout(this);
@@ -139,7 +148,7 @@ public class MedicationNotesActivity extends AppCompatActivity {
                     LinearLayout.LayoutParams.WRAP_CONTENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT
             ));
-            medicationTextView.setText(medication.getName());
+            medicationTextView.setText(medicationDataHelper.getName());
             medicationTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 24);
             medicationTextView.setTypeface(null, Typeface.BOLD);
 
@@ -152,13 +161,13 @@ public class MedicationNotesActivity extends AppCompatActivity {
             notesEditText.setHint("Enter custom notes...");
 
             // Retrieve existing custom notes from the medication notes map (if available)
-            String customNotes = medicationNotesMap.get(medication.getId());
+            String customNotes = medicationNotesMap.get(medicationDataHelper.getId());
             if (customNotes != null) {
                 notesEditText.setText(customNotes);
             }
 
             // Set a tag on the EditText to identify it with the medication ID
-            notesEditText.setTag(medication.getId());
+            notesEditText.setTag(medicationDataHelper.getId());
 
             // Add a TextWatcher to the EditText to track changes and update the medication notes map
             notesEditText.addTextChangedListener(new TextWatcher() {
@@ -170,7 +179,7 @@ public class MedicationNotesActivity extends AppCompatActivity {
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
                     // Update the medication notes map with the custom notes
-                    medicationNotesMap.put(medication.getId(), s.toString());
+                    medicationNotesMap.put(medicationDataHelper.getId(), s.toString());
                     notesChanged = true;
                 }
 
@@ -189,22 +198,25 @@ public class MedicationNotesActivity extends AppCompatActivity {
         }
     }
 
+    // Save Medication Notes Function --> Retrieves ID from database and updates the custom notes related to that ID in the Firebase RTDB.
     private void saveMedicationNotes() {
-        for (Medication medication : savedMedications) {
-            String medicationId = medication.getId();
+        for (Medication_Data_Helper medicationDataHelper : savedMedicationDataHelpers) {
+            String medicationId = medicationDataHelper.getId();
             String customNotes = medicationNotesMap.get(medicationId);
 
             // Update the medication object with the custom notes
-            medication.setCustomNotes(customNotes);
+            medicationDataHelper.setCustomNotes(customNotes);
 
             // Save the updated medication object to the Firebase database
-            databaseReference.child(medicationId).setValue(medication);
+            databaseReference.child(medicationId).setValue(medicationDataHelper);
         }
 
         Toast.makeText(this, "Medication notes saved", Toast.LENGTH_SHORT).show();
         notesChanged = false;
     }
 
+    // Show Save Dialog Function to Save the chnages to the notes and show the changes to the user by creating a small popup message interacting
+    // with the user.
     private void showSaveDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Save Notes");
@@ -217,5 +229,3 @@ public class MedicationNotesActivity extends AppCompatActivity {
         builder.show();
     }
 }
-
-

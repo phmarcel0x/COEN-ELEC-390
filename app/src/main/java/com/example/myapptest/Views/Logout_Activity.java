@@ -24,13 +24,14 @@ public class Logout_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logout);
 
-        // Initialization of Variables
+        //  Get references from views (XML)
         auth = FirebaseAuth.getInstance();
         btn = findViewById(R.id.logout);
         back_button = findViewById(R.id.back_button);
         text_view = findViewById(R.id.user);
         user = auth.getCurrentUser();
 
+        // Check if user exists
         if (user == null){
             Intent intent = new Intent(getApplicationContext(), Login_Activity.class);
             startActivity(intent);
@@ -40,6 +41,7 @@ public class Logout_Activity extends AppCompatActivity {
             text_view.setText(user.getEmail());
         }
 
+        // On click logout redirect back to login activity if ever the user wants to log on to a different account
         btn.setOnClickListener(v -> {
             FirebaseAuth.getInstance().signOut();
             Intent intent = new Intent(getApplicationContext(), Login_Activity.class);
@@ -47,6 +49,7 @@ public class Logout_Activity extends AppCompatActivity {
             finish();
         });
 
+        // Back Button on click to bring the user back to the Homepage Activity
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

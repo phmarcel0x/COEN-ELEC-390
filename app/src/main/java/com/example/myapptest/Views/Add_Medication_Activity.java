@@ -1,24 +1,19 @@
 package com.example.myapptest.Views;
 
-import android.app.AlarmManager;
 import android.app.DatePickerDialog;
-import android.app.Notification;
-import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myapptest.Controllers.Medication;
+import com.example.myapptest.Controllers.Medication_Data_Helper;
 import com.example.myapptest.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -27,7 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Calendar;
 
-public class AddMedicationActivity extends AppCompatActivity {
+public class Add_Medication_Activity extends AppCompatActivity {
 
     // Declaration of the Variables
     private EditText editTextMedicationName;
@@ -44,7 +39,7 @@ public class AddMedicationActivity extends AppCompatActivity {
         // Initialize Firebase database reference
         databaseReference = FirebaseDatabase.getInstance().getReference().child("New Medication");
 
-        // Get references to views
+        //  Get references from views (XML)
         editTextMedicationName = findViewById(R.id.editText_medication_name);
         spinnerTime = findViewById(R.id.spinner_time);
         date_view = findViewById(R.id.calendar_date);
@@ -68,7 +63,7 @@ public class AddMedicationActivity extends AppCompatActivity {
         Button backButton = findViewById(R.id.back_button);
         backButton.setOnClickListener(v -> {
             // Navigate back to the Homepage_Activity
-            Intent intent = new Intent(AddMedicationActivity.this, Homepage_Activity.class);
+            Intent intent = new Intent(Add_Medication_Activity.this, Homepage_Activity.class);
             startActivity(intent);
             finish(); // Optional: finish the AccessibilityActivity
         });
@@ -130,6 +125,7 @@ public class AddMedicationActivity extends AppCompatActivity {
         return time;
     }
 
+    // Save Medication Function that saved Name, Date and Time in the Firebase RTDB under the user specific nodes.
 
     private void saveMedication() {
         // Hide the keyboard
@@ -186,17 +182,17 @@ public class AddMedicationActivity extends AppCompatActivity {
             String medicationId = databaseReference.child("Users").child(uid).child("Saved Medication").push().getKey();
 
             // Create Medication object
-            Medication medication = new Medication(medicationId, medicationName, selectedTime, selectedDate);
+            Medication_Data_Helper medicationDataHelper = new Medication_Data_Helper(medicationId, medicationName, selectedTime, selectedDate);
 
             // Save medication to Firebase database under the user's "Saved Medication" node
             if (medicationId != null) {
                 DatabaseReference savedMedicationRef = FirebaseDatabase.getInstance().getReference().child("Users").child(uid).child("Saved Medication");
-                savedMedicationRef.child(medicationId).setValue(medication)
+                savedMedicationRef.child(medicationId).setValue(medicationDataHelper)
                         .addOnSuccessListener(aVoid -> {
-                            Toast.makeText(AddMedicationActivity.this, "Medication saved successfully", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Add_Medication_Activity.this, "Medication saved successfully", Toast.LENGTH_SHORT).show();
 
                             // Start SavedMedicationActivity and pass medication details
-                            Intent intent = new Intent(AddMedicationActivity.this, SavedMedicationActivity.class);
+                            Intent intent = new Intent(Add_Medication_Activity.this, Saved_Medication_Activity.class);
                             intent.putExtra("medicationName", medicationName);
                             intent.putExtra("selectedTime", selectedTime);
                             intent.putExtra("selectedDate", selectedDate);
@@ -205,15 +201,17 @@ public class AddMedicationActivity extends AppCompatActivity {
                             // Finish the activity and return to Homepage_Activity
                             finish();
                         })
-                        .addOnFailureListener(e -> Toast.makeText(AddMedicationActivity.this, "Failed to save medication", Toast.LENGTH_SHORT).show());
+                        .addOnFailureListener(e -> Toast.makeText(Add_Medication_Activity.this, "Failed to save medication", Toast.LENGTH_SHORT).show());
             } else {
                 Toast.makeText(this, "Failed to save medication", Toast.LENGTH_SHORT).show();
             }
         } else {
             // Handle the case where no user is authenticated
-            Toast.makeText(AddMedicationActivity.this, "No user is authenticated.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(Add_Medication_Activity.this, "No user is authenticated.", Toast.LENGTH_SHORT).show();
         }
     }
+
+    // On cancel function when the user clicks the cancel button while saving a new medication
 
     private void cancel() {
         // Hide the keyboard

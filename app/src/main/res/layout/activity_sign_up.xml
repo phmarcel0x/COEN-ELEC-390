@@ -18,6 +18,7 @@
         app:cardCornerRadius="30dp"
         app:cardElevation="20dp"/>
 
+    <!-- Sign Up Text View -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -28,6 +29,7 @@
         android:layout_marginBottom="20dp"
         android:textStyle="bold" />
 
+    <!--  Name Text Field -->
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -41,6 +43,7 @@
             android:layout_height="wrap_content"/>
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!-- Username Text Field -->
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -54,6 +57,7 @@
             android:layout_height="wrap_content"/>
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!-- Email Text Field -->
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -67,6 +71,7 @@
             android:layout_height="wrap_content"/>
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!-- Password Text Field -->
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -80,14 +85,14 @@
             android:layout_height="wrap_content"/>
     </com.google.android.material.textfield.TextInputLayout>
 
-
-
+    <!-- Progress Bar -->
     <ProgressBar
         android:id="@+id/progress_bar"
         android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
+    <!-- Sign Up Button -->
     <Button
         android:id="@+id/btn_sign_up"
         android:text="Sign Up"
@@ -99,6 +104,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"/>
 
+    <!-- Already a User Text View -->
     <TextView
         android:textStyle="bold"
         android:textSize="20sp"
@@ -109,7 +115,5 @@
         android:textColor="@color/black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-
-
 
 </LinearLayout>

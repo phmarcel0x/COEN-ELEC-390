@@ -26,7 +26,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class Login_Activity extends AppCompatActivity {
 
-
+    // Declaration of the variables
     TextInputEditText edit_email, edit_password;
     Button btn_login;
     ProgressBar progressBar;
@@ -51,6 +51,7 @@ public class Login_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        //  Get references from views (XML)
         mAuth = FirebaseAuth.getInstance();
 
         edit_email = findViewById(R.id.email);
@@ -78,6 +79,7 @@ public class Login_Activity extends AppCompatActivity {
             email = String.valueOf(edit_email.getText());
             password = String.valueOf(edit_password.getText());
 
+            // Check if user tries to login without entering any credentials Email and Password
             if (TextUtils.isEmpty(email)) {
                 Toast.makeText(Login_Activity.this, "Enter Email", Toast.LENGTH_SHORT).show();
                 return;
@@ -87,6 +89,7 @@ public class Login_Activity extends AppCompatActivity {
                 Toast.makeText(Login_Activity.this, "Enter Password", Toast.LENGTH_SHORT).show();
                 return;
             }
+            // Authentication through firebase database saved users
             mAuth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(task -> {
                         progressBar.setVisibility(View.GONE);
@@ -112,6 +115,7 @@ public class Login_Activity extends AppCompatActivity {
             finish();
         });
 
+        // Show / Hide password button that censors the password and only shows when the click is triggered.
         show_hide_password.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

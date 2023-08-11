@@ -21,6 +21,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class Homepage_Activity extends AppCompatActivity implements View.OnClickListener {
 
+    // Declaration of the Variables
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private NavigationView navigationView;
@@ -49,16 +50,20 @@ public class Homepage_Activity extends AppCompatActivity implements View.OnClick
                     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                         // Handle menu item clicks
                         int itemId = menuItem.getItemId();
+                        // On click technical support Activity
                         if (itemId == R.id.nav_support) {
                             Intent intent = new Intent(getApplicationContext(), Technical_Support_Activity.class);
                             startActivity(intent);
                         }
+                        // On click logout Activity
                         else if (itemId == R.id.nav_logout) {
                             Intent intent = new Intent (getApplicationContext(), Logout_Activity.class);
                             startActivity(intent);
+                        // On click Legal information Activity
                         } else if (itemId == R.id.nav_legal) {
                             Intent intent = new Intent (getApplicationContext(), Legal_Information_Activity.class);
                             startActivity(intent);
+                        // On click important notice Activity
                         } else if (itemId == R.id.nav_important_notice) {
                             Intent intent = new Intent (getApplicationContext(), Important_Notice_Activity.class);
                             startActivity(intent);
@@ -85,6 +90,7 @@ public class Homepage_Activity extends AppCompatActivity implements View.OnClick
             emailTextView.setText(email);
         }
 
+        //  Get references from views (XML) for each Image Button that was defined
         ImageButton addMedicationButton = findViewById(R.id.btn_add_new_medication);
         ImageButton savedMedicationsButton = findViewById(R.id.btn_saved_medication);
         ImageButton medicationCommentsButton = findViewById(R.id.btn_medication_notes);
@@ -100,16 +106,16 @@ public class Homepage_Activity extends AppCompatActivity implements View.OnClick
     public void onClick(View view) {
         int id = view.getId();
         if (id == R.id.btn_add_new_medication) { // Handle "Add New Medication" button click
-            Intent addMedicationIntent = new Intent(this, AddMedicationActivity.class);
+            Intent addMedicationIntent = new Intent(this, Add_Medication_Activity.class);
             startActivity(addMedicationIntent);
         } else if (id == R.id.btn_saved_medication) { // Handle "List of Saved Medications" button click
-            Intent savedMedicationsIntent = new Intent(this, SavedMedicationActivity.class);
+            Intent savedMedicationsIntent = new Intent(this, Saved_Medication_Activity.class);
             startActivity(savedMedicationsIntent);
         } else if (id == R.id.btn_medication_notes) { // Handle "Comments About Medications" button click
-            Intent medicationCommentsIntent = new Intent(this, MedicationNotesActivity.class);
+            Intent medicationCommentsIntent = new Intent(this, Medication_Notes_Activity.class);
             startActivity(medicationCommentsIntent);
         } else if (id == R.id.btn_medication_locator) { // Handle "Medication Locator" button click
-            Intent accessibilityIntent = new Intent(this, MapsActivity.class);
+            Intent accessibilityIntent = new Intent(this, Maps_Activity.class);
             startActivity(accessibilityIntent);
         }
     }

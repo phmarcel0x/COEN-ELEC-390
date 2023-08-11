@@ -7,18 +7,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="15dp"
-
-
     tools:context=".Views.Legal_Information_Activity">
 
+    <!-- Scroll View -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <!-- Text View for the legal information -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -26,16 +27,17 @@
             android:textSize="16sp"
             android:text="LEGAL NOTICE: GPS TRACKING SERVICES
 
-\n\nBy accessing and using this mobile application, you acknowledge and agree to the following:
+\n\n By accessing and utilizing this mobile application, you're recognizing and consenting to the complying with:
 
-\n\n1. GPS Tracking Services: The App utilizes tracking services provided by your device's GPS sensor. These services enable the App to determine and share your location information while you are using the App.
-\n\n2. Location Data Collection: The App collects, processes, and stores location-based data to provide you with the intended functionality of the App. This includes your real-time location information, movement patterns, and other related data.
-\n\n3. Purpose of Tracking: The tracking services are utilized to measure the distance between the user of the app and the medication equipped with a GPS sensor. This allows the app to provide information on the user's proximity to the medication and enhance their experience accordingly. The collected location data is used to provide location-based features, such as mapping, navigation, and personalized content.
-\n\n4. Data Privacy and Security: We value your privacy and are committed to protecting your personal information. The location data collected by the App is handled in accordance with our Privacy Policy, which outlines the purposes, methods, and safeguards implemented to ensure the privacy and security of your data.
-\n\n5. Data Accuracy and Reliability: While we strive to provide accurate and reliable location data, it's important to note that GPS accuracy can be affected by various factors beyond our control, including signal strength, atmospheric conditions, and device limitations. Therefore, we do not warrant the accuracy or reliability of the data provided by the App.
-\n\n6. User Consent: By using the App, you provide your consent to the collection, processing, and storage of your location data as described in this legal notice and our Privacy Policy.
-\n\n7. User Responsibility: You are solely responsible for the use of the App and its impact on your personal privacy and safety. It is your responsibility to exercise caution and use discretion while sharing your location information with others through the App.
-\n\n8. Legal Compliance: You agree to use the App and its tracking services in compliance with all applicable laws, regulations, and third-party rights.
+\n\n1. GPS Monitoring: The application tracks and uploads the place information offered by the device's GPS sensing unit. This allows the application to identify and share your place info while you are utilizing the application and track the place of the sensing unit throughout it is connection to the web at perpetuities.
+\n\n2. Place Information Collection: This application retrieves and conserves the location-based information to offer the individuals with the meant performance of our application. This consists of the real-time place info.
+\n\n3. Function of Place Monitoring: Monitoring the place is utilized to discover the medicine set geared up with a GPS sensing unit. This enables the application to offer info on the medicine container's distance. The gathered place information is utilized to offer location-based functions, such as mapping and navigating to have the ability to recover the MediKit if shed or failed to remember.
+\n\n4. Information Personal privacy and Safety and safety: We worth the user's personal privacy and we are dedicated to safeguard all the user's individual info. The place information gathered by the application is managed according to our Personal privacy Plan to guarantee the personal privacy and safety and safety of the user's information.
+\n\n5. Information safety and safety and personal privacy: We regard individual personal privacy and are dedicated to protecting all the user's individual information. To safeguard the personal privacy and safety and safety of the user's information, the place information collected by the application is handled according to our Personal privacy Plan.
+\n\n6.Information Precision and Dependability: It is essential to understand that a range of outside elements, such as indicate stamina, atmospheric problems, and equipment gadget limitations, may have an effect on the GPS sensing unit precision. Consequently, we can't assurance the dependability or precision of the information provided by the application.
+\n\n7.Individual Consent: You thus offer your contract to the keeping and retrieval of your place information as described over in this lawful discover by utilizing our application.
+\n\n8. Individual Obligation: It's completely as much as you, the individual, to use this application and understand how it might impact your individual security and personal privacy. When sharing your place info with our application, we admonish you to utilize care and great judgement.
+Lawful Consistency: You recognize that you will follow all appropriate terms when utilizing the application and its monitoring solutions.
 
 \n\nIf you do not agree with any part of this legal notice, please refrain from using the App.\n">
 

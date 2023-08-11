@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:padding="15dp"
     android:background = "@color/background"
-    tools:context=".Views.SavedMedicationActivity">
+    tools:context=".Views.Saved_Medication_Activity">
 
     <!-- Saved Medication Text Box -->
     <TextView
@@ -53,6 +53,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintVertical_bias="0.95" />
 
+    <!-- Scroll View -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"

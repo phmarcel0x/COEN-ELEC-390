@@ -10,12 +10,14 @@
     android:background="@drawable/background"
     tools:context=".Views.MainActivity">
 
+    <!-- User Text View -->
     <TextView
         android:id="@+id/user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!"/>
 
+    <!-- Logout Button -->
     <Button
         android:id="@+id/logout"
         android:text="Logout"
@@ -25,6 +27,7 @@
         android:textColor="@color/black"
         app:cornerRadius = "20dp" />
 
+    <!-- Back Button -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/back_button"
         android:layout_width="match_parent"

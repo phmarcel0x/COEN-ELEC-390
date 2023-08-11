@@ -2,25 +2,29 @@ package com.example.myapptest.Controllers;
 
 import java.io.Serializable;
 
-public class Medication implements Serializable {
+public class Medication_Data_Helper implements Serializable {
+
+    // Declaration of the variables
     private String id;
     private String name;
     private String time;
     private String date;
     private String customNotes;
 
-    public Medication() {
+    // Empty Constructor
+    public Medication_Data_Helper() {
         // Required empty constructor for Firebase
     }
 
-    public Medication(String medicationId, String medicationName, String selectedTime, String selectedDate) {
+    // Constructor with arguments for the Firebase Database
+    public Medication_Data_Helper(String medicationId, String medicationName, String selectedTime, String selectedDate) {
         this.id = medicationId;
         this.name = medicationName;
         this.time = selectedTime;
         this.date = selectedDate;
     }
 
-    public Medication(String id, String name, String time, String date, String customNotes) {
+    public Medication_Data_Helper(String id, String name, String time, String date, String customNotes) {
         this.id = id;
         this.name = name;
         this.time = time;

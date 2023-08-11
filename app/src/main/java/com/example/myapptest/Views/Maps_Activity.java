@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import com.example.myapptest.Controllers.GPS;
+import com.example.myapptest.Controllers.GPS_Data_Helper;
 import com.example.myapptest.R;
 import com.example.myapptest.databinding.ActivityMapsBinding;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -29,8 +29,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 
-public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class Maps_Activity extends AppCompatActivity implements OnMapReadyCallback {
 
+    // Declaration of the Variables
     private GoogleMap mMap;
     private ActivityMapsBinding binding;
     private float zoom = 10f;
@@ -38,7 +39,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     private DatabaseReference databaseReference;
 
-    private List<GPS> gps_location;
+    private List<GPS_Data_Helper> gps_DataHelper_location;
     private LatLng mostRecentLocation;
 
 
@@ -48,10 +49,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         return true;
     }
 
+    // Refresh the Marker status in the maps activity
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            startActivity(new Intent(MapsActivity.this, Homepage_Activity.class));
+            startActivity(new Intent(Maps_Activity.this, Homepage_Activity.class));
             return true;
         }
         if (item.getItemId() == R.id.action_refresh) {
@@ -81,6 +83,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
 
+    // Get the variables from views
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,11 +93,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-//
-//     binding = ActivityMapsBinding.inflate(getLayoutInflater());
-//     setContentView(binding.getRoot());
-
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        // Notify the user when the SupportMapFragrment is available.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.mapMap);
         mapFragment.getMapAsync(this);
@@ -110,6 +109,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
      * installed Google Play services and returned to the app.
      */
     // Inside onMapReady method
+
+    // On Map Ready function that retrieves the data from the RTDB and updates the maps activity accordingly
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -124,7 +125,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 // Clear existing markers from the map
                 mMap.clear();
 
-                // Check if the "latitude" and "longitude" nodes exist before trying to get their values
+                // Check if the "latitude" and "longitude" nodes exist on the RTDB. If yes then retrieve the saved data, if not therefore no location available toast is printed.
                 if (dataSnapshot.child("latitude").exists() && dataSnapshot.child("longitude").exists()) {
                     // Get the latitude and longitude values from the "gps_location" node
                     double latitude = dataSnapshot.child("latitude").getValue(Double.class);
@@ -140,14 +141,15 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mostRecentLocation, zoom));
                 } else {
                     // Handle the case where latitude or longitude data is missing
-                    Toast.makeText(MapsActivity.this, "No location data available.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Maps_Activity.this, "No location data available.", Toast.LENGTH_SHORT).show();
                 }
             }
 
+            // On cancel function if unable to retrieve data from firebase RTDB.
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 // Handle database read error if needed
-                Toast.makeText(MapsActivity.this, "Error fetching data from Firebase", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Maps_Activity.this, "Error fetching data from Firebase", Toast.LENGTH_SHORT).show();
                 Log.e("FirebaseError", databaseError.getMessage());
             }
         });

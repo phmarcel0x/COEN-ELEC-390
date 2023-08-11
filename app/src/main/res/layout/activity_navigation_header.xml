@@ -18,6 +18,8 @@
         android:textStyle="bold"
         android:textColor="@color/black"
         android:textSize="21sp" />
+
+    <!-- User Text View -->
     <TextView
         android:id="@+id/user_name"
         android:textColor="@color/black"

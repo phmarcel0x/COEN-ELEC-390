@@ -17,7 +17,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myapptest.Controllers.Medication;
+import com.example.myapptest.Controllers.Medication_Data_Helper;
 import com.example.myapptest.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -30,21 +30,23 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SavedMedicationActivity extends AppCompatActivity {
+public class Saved_Medication_Activity extends AppCompatActivity {
 
+    // Declaration of Variables
     private LinearLayout medicationListLayout;
     private DatabaseReference databaseReference;
-    private List<Medication> savedMedications;
+    private List<Medication_Data_Helper> savedMedicationDataHelpers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_saved_medication);
 
+        //  Get references from views (XML)
         Button backButton = findViewById(R.id.back_button);
         backButton.setOnClickListener(v -> {
             // Navigate back to the Homepage_Activity
-            Intent intent = new Intent(SavedMedicationActivity.this, Homepage_Activity.class);
+            Intent intent = new Intent(Saved_Medication_Activity.this, Homepage_Activity.class);
             startActivity(intent);
             finish(); // Optional: finish the SavedMedicationActivity
         });
@@ -57,15 +59,15 @@ public class SavedMedicationActivity extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child(uid).child("Saved Medication");
 
         // Retrieve saved medications from the database
-        savedMedications = new ArrayList<>();
+        savedMedicationDataHelpers = new ArrayList<>();
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                savedMedications.clear();
+                savedMedicationDataHelpers.clear();
                 for (DataSnapshot medicationSnapshot : dataSnapshot.getChildren()) {
-                    Medication medication = medicationSnapshot.getValue(Medication.class);
-                    if (medication != null) {
-                        savedMedications.add(medication);
+                    Medication_Data_Helper medicationDataHelper = medicationSnapshot.getValue(Medication_Data_Helper.class);
+                    if (medicationDataHelper != null) {
+                        savedMedicationDataHelpers.add(medicationDataHelper);
                     }
                 }
 
@@ -79,7 +81,7 @@ public class SavedMedicationActivity extends AppCompatActivity {
                 String errorMessage = databaseError.getMessage();
 
                 // Display an error message to the user
-                Toast.makeText(SavedMedicationActivity.this, "Error: " + errorMessage, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Saved_Medication_Activity.this, "Error: " + errorMessage, Toast.LENGTH_SHORT).show();
 
                 // Log the error for debugging purposes
                 Log.e("FirebaseError", errorMessage);
@@ -92,8 +94,8 @@ public class SavedMedicationActivity extends AppCompatActivity {
         medicationListLayout.removeAllViews(); // Clear the existing views
 
         // Create a view for each saved medication
-        for (int i = 0; i < savedMedications.size(); i++) {
-            Medication medication = savedMedications.get(i);
+        for (int i = 0; i < savedMedicationDataHelpers.size(); i++) {
+            Medication_Data_Helper medicationDataHelper = savedMedicationDataHelpers.get(i);
 
             // Create a new RelativeLayout to hold each medication item
             RelativeLayout itemLayout = new RelativeLayout(this);
@@ -113,7 +115,7 @@ public class SavedMedicationActivity extends AppCompatActivity {
             medicationTextView.setLayoutParams(textLayoutParams);
             medicationTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 24);
             medicationTextView.setTypeface(null, Typeface.BOLD);
-            medicationTextView.setText(medication.getName() + " - " + medication.getTime() + "\n" + medication.getDate());
+            medicationTextView.setText(medicationDataHelper.getName() + " - " + medicationDataHelper.getTime() + "\n" + medicationDataHelper.getDate());
 
             // Create an ImageView for the delete button
             ImageView deleteImageView = new ImageView(this);
@@ -128,7 +130,7 @@ public class SavedMedicationActivity extends AppCompatActivity {
             deleteImageView.setImageResource(R.drawable.bin_24);
             deleteImageView.setContentDescription("Delete Medication");
             deleteImageView.setClickable(true);
-            deleteImageView.setOnClickListener(v -> confirmDelete(medication));
+            deleteImageView.setOnClickListener(v -> confirmDelete(medicationDataHelper));
 
             // Add the TextView and ImageView to the item layout
             itemLayout.addView(medicationTextView);
@@ -139,28 +141,33 @@ public class SavedMedicationActivity extends AppCompatActivity {
         }
     }
 
-    private void confirmDelete(Medication medication) {
+    // Confirm Delete function creating a small popup to ask the user if he / she are sure of deleting an already saved medication from the list.
+    private void confirmDelete(Medication_Data_Helper medicationDataHelper) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Confirm Delete")
                 .setMessage("Are you sure you want to delete this medication?")
                 .setPositiveButton("Delete", (dialog, which) -> {
-                    ask(medication);
+                    ask(medicationDataHelper);
                     // Delete medication from Firebase database
-                    if (medication != null) {
-                        String medicationId = medication.getId();
+                    if (medicationDataHelper != null) {
+                        String medicationId = medicationDataHelper.getId();
                         databaseReference.child(medicationId).removeValue();
-                        Toast.makeText(SavedMedicationActivity.this, "Medication deleted", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Saved_Medication_Activity.this, "Medication deleted", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .setNegativeButton("Cancel", null)
                 .show();
     }
-    public void ask(Medication medication){
+    // Ask function to ask the user if he / she would like to update the medication list after deletion
+    // It consists of editing the list by asking a popup to update.
+    // If yes navigate to add new medication
+    // If not stay in saved medication activity
+    public void ask(Medication_Data_Helper medicationDataHelper){
         AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
         builder1.setTitle("Update Medication List")
                 .setMessage("Would you like to add a new medication to the list?")
                 .setPositiveButton("Yes", (dialog, which) -> {
-                    Intent intent = new Intent (getApplicationContext(), AddMedicationActivity.class);
+                    Intent intent = new Intent (getApplicationContext(), Add_Medication_Activity.class);
                     startActivity(intent);
                     finish();
                 })

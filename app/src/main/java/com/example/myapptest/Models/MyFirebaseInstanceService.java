@@ -20,6 +20,7 @@ import java.util.Random;
 
 public class MyFirebaseInstanceService extends FirebaseMessagingService {
 
+    // Firebase Instance for sending notifications
     @Override
     public void onMessageReceived(@NonNull RemoteMessage remoteMessage){
         super.onMessageReceived(remoteMessage);
@@ -32,6 +33,7 @@ public class MyFirebaseInstanceService extends FirebaseMessagingService {
         }
     }
 
+    // Show notification function to design the notification (Title and Body)
     private void showNotification(Map<String, String>data){
         String title = data.get("title").toString();
         String body = data.get("body").toString();

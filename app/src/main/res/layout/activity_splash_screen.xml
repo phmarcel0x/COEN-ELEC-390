@@ -9,7 +9,7 @@
     android:orientation="vertical"
     android:padding="15dp"
     android:background="@drawable/background_login"
-    tools:context=".Views.SplashScreen">
+    tools:context=".Views.Splash_Screen_Activity">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -72,9 +72,4 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
 </LinearLayout>
-
-
-
-
-
 
