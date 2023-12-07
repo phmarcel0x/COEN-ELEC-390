@@ -1,6 +1,6 @@
 # MEDIMAPS: An Android Medication Tracker App
-### COEN/ELEC-390: Concordia University Mini Capstone Project
-### Team Members: Marcelo, Kateryna, Yassine, Michel, Matthew
+## COEN/ELEC-390: Concordia University Mini Capstone Project
+## Team Members: Marcelo, Kateryna, Yassine, Michel, Matthew
 
 ## Tech Stack
 
