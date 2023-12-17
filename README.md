@@ -1,4 +1,5 @@
-# MEDIMAPS: An Android Medication Tracker App
+# MEDIMAPS: An Android Medication Tracker App 
+![ic_launcher](https://github.com/phmarcel0x/COEN-ELEC-390/assets/90793907/dfd31a80-e038-4de8-b281-6beb8f96a96f)
 ## COEN/ELEC-390: Concordia University Mini Capstone Project
 ## Team Members: Marcelo, Kateryna, Yassine, Michel, Matthew
 
